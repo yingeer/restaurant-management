@@ -145,7 +145,9 @@
   <ItemGroup>
     <Folder Include="DataBase\" />
     <Folder Include="Data\" />
-    <Folder Include="Image\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\桌子.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
