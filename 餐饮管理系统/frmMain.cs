@@ -42,8 +42,6 @@ namespace MrCy
             {
                 系统维护ToolStripMenuItem.Enabled = false;
             }
-
-
         }
 
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -74,8 +72,8 @@ namespace MrCy
             try
             {
                 con.Open();
-                MessageBox.Show("数据库链接成功");
-                string sql = "";
+                
+                string sql = "select * from tb_Room";
                 SqlCommand cmd = new SqlCommand(sql, con);
                 this.sdr = cmd.ExecuteReader();
                 while(sdr.Read())
@@ -101,10 +99,12 @@ namespace MrCy
             // AddItem方法为ListView1控件添加项目
             if (rzt == "使用")
             {
-
+                // 使用状态的话添加索引为1的图片
+                listView1.Items.Add(this.sdr["RoomName"].ToString(), 1);
             } else
             {
-
+                // 添加索引为0的图片
+                listView1.Items.Add(this.sdr["RoomName"].ToString(), 0);
             }
         }
     }
