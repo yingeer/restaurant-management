@@ -63,6 +63,16 @@ namespace MrCy.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap 图片2 {
+            get {
+                object obj = ResourceManager.GetObject("图片2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap 桌子 {
             get {
                 object obj = ResourceManager.GetObject("桌子", resourceCulture);
