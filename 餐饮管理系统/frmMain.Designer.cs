@@ -91,7 +91,7 @@
             // 系统维护ToolStripMenuItem
             // 
             this.系统维护ToolStripMenuItem.Name = "系统维护ToolStripMenuItem";
-            this.系统维护ToolStripMenuItem.Size = new System.Drawing.Size(98, 32);
+            this.系统维护ToolStripMenuItem.Size = new System.Drawing.Size(98, 28);
             this.系统维护ToolStripMenuItem.Text = "系统维护";
             // 
             // 系统设置ToolStripMenuItem
@@ -185,7 +185,7 @@
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "桌子.png");
-            this.imageList1.Images.SetKeyName(1, "桌子.png");
+            this.imageList1.Images.SetKeyName(1, "空闲餐桌.png");
             // 
             // contextMenuStrip1
             // 
@@ -231,10 +231,12 @@
             // 
             // listView1
             // 
+            this.listView1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(35, 55);
+            this.listView1.LargeImageList = this.imageList1;
+            this.listView1.Location = new System.Drawing.Point(156, 74);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(745, 467);
+            this.listView1.Size = new System.Drawing.Size(566, 440);
             this.listView1.TabIndex = 19;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged_1);
@@ -243,7 +245,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::MrCy.Properties.Resources.图片2;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(918, 580);
             this.ContextMenuStrip = this.contextMenuStrip1;

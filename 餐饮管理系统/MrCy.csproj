@@ -147,7 +147,7 @@
     <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Image\桌子.png" />
+    <None Include="Image\使用桌子.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\图片2.png" />

@@ -100,11 +100,11 @@ namespace MrCy
             if (rzt == "使用")
             {
                 // 使用状态的话添加索引为1的图片
-                listView1.Items.Add(this.sdr["RoomName"].ToString(), 1);
+                listView1.Items.Add(this.sdr["RoomName"].ToString() + "\n" + this.sdr["RoomZT"].ToString(), 0);
             } else
             {
                 // 添加索引为0的图片
-                listView1.Items.Add(this.sdr["RoomName"].ToString(), 0);
+                listView1.Items.Add(this.sdr["RoomName"].ToString() + "\n" + this.sdr["RoomZT"].ToString(), 1);
             }
         }
     }
