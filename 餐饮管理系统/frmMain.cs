@@ -107,5 +107,53 @@ namespace MrCy
                 listView1.Items.Add(this.sdr["RoomName"].ToString() + "\n" + this.sdr["RoomZT"].ToString(), 1);
             }
         }
+
+        private void 基础信息ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void 桌台信息ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDesk desk = new frmDesk();
+            desk.ShowDialog();
+        }
+
+        private void 职员信息ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUser users = new frmUser();
+            users.ShowDialog();
+        }
+
+        private void 权限管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmQxGl qx = new frmQxGl();
+            qx.ShowDialog();
+        }
+
+        private void 系统备份ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmBF bf = new frmBF();
+            bf.ShowDialog();
+        }
+
+        private void 系统恢复ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmHF hf = new frmHF();
+            hf.ShowDialog();
+        }
+
+        private void 口令设置ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPWD pwd = new frmPWD();
+            pwd.ShowDialog();
+
+        }
+
+        private void 系统锁定ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmLock lockSystem = new frmLock();
+            lockSystem.ShowDialog();
+        }
     }
 }
