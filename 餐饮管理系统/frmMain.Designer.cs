@@ -38,7 +38,10 @@
             this.系统维护ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.权限管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.系统备份ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.系统恢复ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.系统设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.口令设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.系统锁定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -58,9 +61,7 @@
             this.消费查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.结账ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.系统恢复ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.口令设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.系统锁定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -126,16 +127,23 @@
             // 权限管理ToolStripMenuItem
             // 
             this.权限管理ToolStripMenuItem.Name = "权限管理ToolStripMenuItem";
-            this.权限管理ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.权限管理ToolStripMenuItem.Size = new System.Drawing.Size(182, 34);
             this.权限管理ToolStripMenuItem.Text = "权限管理";
             this.权限管理ToolStripMenuItem.Click += new System.EventHandler(this.权限管理ToolStripMenuItem_Click);
             // 
             // 系统备份ToolStripMenuItem
             // 
             this.系统备份ToolStripMenuItem.Name = "系统备份ToolStripMenuItem";
-            this.系统备份ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.系统备份ToolStripMenuItem.Size = new System.Drawing.Size(182, 34);
             this.系统备份ToolStripMenuItem.Text = "系统备份";
             this.系统备份ToolStripMenuItem.Click += new System.EventHandler(this.系统备份ToolStripMenuItem_Click);
+            // 
+            // 系统恢复ToolStripMenuItem
+            // 
+            this.系统恢复ToolStripMenuItem.Name = "系统恢复ToolStripMenuItem";
+            this.系统恢复ToolStripMenuItem.Size = new System.Drawing.Size(182, 34);
+            this.系统恢复ToolStripMenuItem.Text = "系统恢复";
+            this.系统恢复ToolStripMenuItem.Click += new System.EventHandler(this.系统恢复ToolStripMenuItem_Click);
             // 
             // 系统设置ToolStripMenuItem
             // 
@@ -145,6 +153,20 @@
             this.系统设置ToolStripMenuItem.Name = "系统设置ToolStripMenuItem";
             this.系统设置ToolStripMenuItem.Size = new System.Drawing.Size(98, 28);
             this.系统设置ToolStripMenuItem.Text = "系统设置";
+            // 
+            // 口令设置ToolStripMenuItem
+            // 
+            this.口令设置ToolStripMenuItem.Name = "口令设置ToolStripMenuItem";
+            this.口令设置ToolStripMenuItem.Size = new System.Drawing.Size(182, 34);
+            this.口令设置ToolStripMenuItem.Text = "口令设置";
+            this.口令设置ToolStripMenuItem.Click += new System.EventHandler(this.口令设置ToolStripMenuItem_Click);
+            // 
+            // 系统锁定ToolStripMenuItem
+            // 
+            this.系统锁定ToolStripMenuItem.Name = "系统锁定ToolStripMenuItem";
+            this.系统锁定ToolStripMenuItem.Size = new System.Drawing.Size(182, 34);
+            this.系统锁定ToolStripMenuItem.Text = "系统锁定";
+            this.系统锁定ToolStripMenuItem.Click += new System.EventHandler(this.系统锁定ToolStripMenuItem_Click);
             // 
             // 帮助ToolStripMenuItem
             // 
@@ -277,6 +299,10 @@
             // 
             // listView1
             // 
+            this.listView1.BackgroundImage = global::MrCy.Properties.Resources.图片2;
+            this.listView1.BackgroundImageTiled = true;
+            this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listView1.ContextMenuStrip = this.contextMenuStrip1;
             this.listView1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.listView1.HideSelection = false;
             this.listView1.LargeImageList = this.imageList1;
@@ -286,27 +312,14 @@
             this.listView1.TabIndex = 19;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged_1);
+            this.listView1.Click += new System.EventHandler(this.listView1_Click);
             // 
-            // 系统恢复ToolStripMenuItem
+            // textBox1
             // 
-            this.系统恢复ToolStripMenuItem.Name = "系统恢复ToolStripMenuItem";
-            this.系统恢复ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-            this.系统恢复ToolStripMenuItem.Text = "系统恢复";
-            this.系统恢复ToolStripMenuItem.Click += new System.EventHandler(this.系统恢复ToolStripMenuItem_Click);
-            // 
-            // 口令设置ToolStripMenuItem
-            // 
-            this.口令设置ToolStripMenuItem.Name = "口令设置ToolStripMenuItem";
-            this.口令设置ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-            this.口令设置ToolStripMenuItem.Text = "口令设置";
-            this.口令设置ToolStripMenuItem.Click += new System.EventHandler(this.口令设置ToolStripMenuItem_Click);
-            // 
-            // 系统锁定ToolStripMenuItem
-            // 
-            this.系统锁定ToolStripMenuItem.Name = "系统锁定ToolStripMenuItem";
-            this.系统锁定ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-            this.系统锁定ToolStripMenuItem.Text = "系统锁定";
-            this.系统锁定ToolStripMenuItem.Click += new System.EventHandler(this.系统锁定ToolStripMenuItem_Click);
+            this.textBox1.Location = new System.Drawing.Point(49, 328);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 28);
+            this.textBox1.TabIndex = 20;
             // 
             // frmMain
             // 
@@ -315,7 +328,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(918, 580);
-            this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -367,5 +380,6 @@
         private System.Windows.Forms.ToolStripMenuItem 系统恢复ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 口令设置ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 系统锁定ToolStripMenuItem;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

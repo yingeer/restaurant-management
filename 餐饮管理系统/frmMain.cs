@@ -13,7 +13,7 @@ namespace MrCy
     public partial class frmMain : Form
     {
         public SqlDataReader sdr;
-        public string power = "1"; // 登录用户权限
+        public string power = "0"; // 登录用户权限
         public string Names;
         public string Times;
 
@@ -154,6 +154,61 @@ namespace MrCy
         {
             frmLock lockSystem = new frmLock();
             lockSystem.ShowDialog();
+        }
+
+        private void listView1_Click(object sender, EventArgs e)
+        {
+            string roomName = listView1.SelectedItems[0].SubItems[0].Text.Substring(0, 5);
+            SqlConnection con = BaseClass.DBConn.CyCon();
+            try
+            {
+                // 链接数据库
+                
+                con.Open();
+                
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("数据库链接失败");
+            }
+            
+            try
+            {
+                
+                string sql = "select * from tb_Room where RoomName=N'" + roomName + "'";
+                SqlCommand cmd = new SqlCommand(sql, con);
+                this.sdr = cmd.ExecuteReader();
+                while (sdr.Read())
+                {
+                    // 对桌台状态进行判断
+                    string roomZT = sdr["RoomZT"].ToString().Trim();
+                    if (roomZT == "使用")
+                    {
+                        this.contextMenuStrip1.Items[0].Enabled = false;
+                        this.contextMenuStrip1.Items[1].Enabled = true;
+                        this.contextMenuStrip1.Items[2].Enabled = true;
+                        this.contextMenuStrip1.Items[3].Enabled = true;
+                        this.contextMenuStrip1.Items[4].Enabled = true;
+                    } 
+                    else
+                    {
+                        this.contextMenuStrip1.Items[0].Enabled = true;
+                        this.contextMenuStrip1.Items[1].Enabled = false;
+                        this.contextMenuStrip1.Items[2].Enabled = false;
+                        this.contextMenuStrip1.Items[3].Enabled = false;
+                        this.contextMenuStrip1.Items[4].Enabled = false;
+                    }
+                }
+                sdr.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("数据库操作失败" + ex);
+            }
+            finally
+            {
+                con.Close();
+            }
         }
     }
 }
