@@ -22,5 +22,16 @@ namespace MrCy.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=laptop-F655BS77;Initial Catalog=MrCy;Persist Security Info=True;User " +
+            "ID=ying;Password=newman123")]
+        public string MrCyConnectionString {
+            get {
+                return ((string)(this["MrCyConnectionString"]));
+            }
+        }
     }
 }
