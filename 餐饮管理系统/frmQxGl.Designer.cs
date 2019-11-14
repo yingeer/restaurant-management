@@ -30,15 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.tbUserBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mrCyDataSet = new MrCy.MrCyDataSet();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.mrCyDataSet = new MrCy.MrCyDataSet();
-            this.tbUserBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tb_UserTableAdapter = new MrCy.MrCyDataSetTableAdapters.tb_UserTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mrCyDataSet)).BeginInit();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tbUserBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mrCyDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -51,6 +52,16 @@
             this.comboBox1.Size = new System.Drawing.Size(121, 26);
             this.comboBox1.TabIndex = 0;
             this.comboBox1.ValueMember = "UserName";
+            // 
+            // tbUserBindingSource
+            // 
+            this.tbUserBindingSource.DataMember = "tb_User";
+            this.tbUserBindingSource.DataSource = this.mrCyDataSet;
+            // 
+            // mrCyDataSet
+            // 
+            this.mrCyDataSet.DataSetName = "MrCyDataSet";
+            this.mrCyDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label1
             // 
@@ -82,35 +93,39 @@
             this.numericUpDown1.Size = new System.Drawing.Size(120, 28);
             this.numericUpDown1.TabIndex = 3;
             // 
-            // mrCyDataSet
-            // 
-            this.mrCyDataSet.DataSetName = "MrCyDataSet";
-            this.mrCyDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tbUserBindingSource
-            // 
-            this.tbUserBindingSource.DataMember = "tb_User";
-            this.tbUserBindingSource.DataSource = this.mrCyDataSet;
-            // 
             // tb_UserTableAdapter
             // 
             this.tb_UserTableAdapter.ClearBeforeFill = true;
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImage = global::MrCy.Properties.Resources.图片2;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Location = new System.Drawing.Point(143, 235);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 33);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "确定修改";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // frmQxGl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(309, 305);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
             this.Name = "frmQxGl";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Text = "权限管理";
             this.Load += new System.EventHandler(this.frmQxGl_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mrCyDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbUserBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mrCyDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -125,5 +140,6 @@
         private MrCyDataSet mrCyDataSet;
         private System.Windows.Forms.BindingSource tbUserBindingSource;
         private MrCyDataSetTableAdapters.tb_UserTableAdapter tb_UserTableAdapter;
+        private System.Windows.Forms.Button button1;
     }
 }
