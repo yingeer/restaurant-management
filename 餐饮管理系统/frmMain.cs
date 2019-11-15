@@ -224,5 +224,48 @@ namespace MrCy
                 MessageBox.Show("请选择桌台");
             }
         }
+
+        private void 取消开台ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count != 0)
+            {
+                // 取消开台，更改tb_Room的RoomZT，删除tb_GuestFood这条记录
+                string name = listView1.SelectedItems[0].SubItems[0].Text.Substring(0, 5);
+                SqlConnection con = BaseClass.DBConn.CyCon();
+                try
+                {
+                    con.Open();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("数据库链接失败");
+                }
+                try
+                {
+                    string sql = "update tb_Room  set  RoomZT='空闲', Num=0 where RoomName=N'" + name +"'";
+                    SqlCommand cmd = new SqlCommand(sql, con);
+                    int rows = cmd.ExecuteNonQuery();
+                    if (rows > 0)
+                    {
+                        MessageBox.Show("取消开台执行成功");
+                    }
+                    sql = "delete from tb_GuestFood where zhuotai=N'"+name+"'";
+                    cmd = new SqlCommand(sql, con);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("取消开台失败"+ex);
+                }
+                finally
+                {
+                    con.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("请选择桌台");
+            }
+        }
     }
 }

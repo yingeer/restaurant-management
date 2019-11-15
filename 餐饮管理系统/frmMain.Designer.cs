@@ -278,6 +278,7 @@
             this.取消开台ToolStripMenuItem.Name = "取消开台ToolStripMenuItem";
             this.取消开台ToolStripMenuItem.Size = new System.Drawing.Size(240, 30);
             this.取消开台ToolStripMenuItem.Text = "取消开台";
+            this.取消开台ToolStripMenuItem.Click += new System.EventHandler(this.取消开台ToolStripMenuItem_Click);
             // 
             // 点加菜ToolStripMenuItem
             // 
