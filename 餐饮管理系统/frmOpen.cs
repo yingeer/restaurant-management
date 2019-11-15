@@ -85,11 +85,13 @@ namespace MrCy
                     
                 // 存入tb_Room表
                 string sql = "update tb_Room set "+ 
-                    "GuestName=N'"+ GuestName+"', "+"WaiterName=N'"+WaiterName+"', "+"RoomBZ=N'"+RoomBZ+"' "+
-                    "zhangdanDate=N'" +zhangdanDate+ "', " + "Num="+customerNum+ "RoomZT=N'使用'"+
+                    "GuestName=N'"+ GuestName+"', "+"WaiterName=N'"+WaiterName+"', "+"RoomBZ=N'"+RoomBZ+"', "+
+                    "zhangdanDate=N'" +zhangdanDate+ "', " + "Num="+customerNum+ " ,RoomZT=N'使用'"+
                     " where RoomName=N'"+RoomName+"'";
                 SqlCommand cmd = new SqlCommand(sql, con);
                 cmd.ExecuteNonQuery();
+                MessageBox.Show("数据插入成功");
+
             }
             catch (Exception ex)
             {
