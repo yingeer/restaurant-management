@@ -213,7 +213,7 @@ namespace MrCy
             {
                 string name = listView1.SelectedItems[0].SubItems[0].Text.Substring(0, 5);
                 frmOpen openRoom = new frmOpen();
-                openRoom.Name = name;
+                openRoom.Rname = name;
                 openRoom.ShowDialog();
             } 
             else

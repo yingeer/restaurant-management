@@ -28,20 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.buttonExit = new System.Windows.Forms.Button();
+            this.textCustomerName = new System.Windows.Forms.TextBox();
+            this.textCustomerNum = new System.Windows.Forms.TextBox();
+            this.textBZ = new System.Windows.Forms.TextBox();
+            this.comboNum = new System.Windows.Forms.ComboBox();
+            this.comboWaiter = new System.Windows.Forms.ComboBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.mrCyDataSet = new MrCy.MrCyDataSet();
+            this.tbRoomBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tb_RoomTableAdapter = new MrCy.MrCyDataSetTableAdapters.tb_RoomTableAdapter();
+            this.tbWaiterBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tb_WaiterTableAdapter = new MrCy.MrCyDataSetTableAdapters.tb_WaiterTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.mrCyDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbRoomBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbWaiterBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -98,70 +107,100 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "备注：";
             // 
-            // button1
+            // buttonSave
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Location = new System.Drawing.Point(185, 251);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 37);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "保存";
-            this.button1.UseVisualStyleBackColor = false;
+            this.buttonSave.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonSave.Location = new System.Drawing.Point(253, 251);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(87, 37);
+            this.buttonSave.TabIndex = 6;
+            this.buttonSave.Text = "保存";
+            this.buttonSave.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // buttonExit
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button2.Location = new System.Drawing.Point(392, 251);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(87, 37);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "退出";
-            this.button2.UseVisualStyleBackColor = false;
+            this.buttonExit.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonExit.Location = new System.Drawing.Point(413, 251);
+            this.buttonExit.Name = "buttonExit";
+            this.buttonExit.Size = new System.Drawing.Size(87, 37);
+            this.buttonExit.TabIndex = 7;
+            this.buttonExit.Text = "退出";
+            this.buttonExit.UseVisualStyleBackColor = false;
             // 
-            // textBox1
+            // textCustomerName
             // 
-            this.textBox1.Location = new System.Drawing.Point(186, 115);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 28);
-            this.textBox1.TabIndex = 8;
+            this.textCustomerName.Location = new System.Drawing.Point(186, 115);
+            this.textCustomerName.Name = "textCustomerName";
+            this.textCustomerName.Size = new System.Drawing.Size(186, 28);
+            this.textCustomerName.TabIndex = 8;
             // 
-            // textBox2
+            // textCustomerNum
             // 
-            this.textBox2.Location = new System.Drawing.Point(553, 115);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 28);
-            this.textBox2.TabIndex = 9;
+            this.textCustomerNum.Location = new System.Drawing.Point(553, 115);
+            this.textCustomerNum.Name = "textCustomerNum";
+            this.textCustomerNum.Size = new System.Drawing.Size(186, 28);
+            this.textCustomerNum.TabIndex = 9;
+            this.textCustomerNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textCustomerNum_KeyPress);
             // 
-            // textBox3
+            // textBZ
             // 
-            this.textBox3.Location = new System.Drawing.Point(553, 172);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 28);
-            this.textBox3.TabIndex = 10;
+            this.textBZ.Location = new System.Drawing.Point(553, 172);
+            this.textBZ.Name = "textBZ";
+            this.textBZ.Size = new System.Drawing.Size(186, 28);
+            this.textBZ.TabIndex = 10;
             // 
-            // comboBox1
+            // comboNum
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(185, 54);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(101, 26);
-            this.comboBox1.TabIndex = 11;
+            this.comboNum.DataSource = this.tbRoomBindingSource;
+            this.comboNum.DisplayMember = "RoomName";
+            this.comboNum.FormattingEnabled = true;
+            this.comboNum.Location = new System.Drawing.Point(185, 54);
+            this.comboNum.Name = "comboNum";
+            this.comboNum.Size = new System.Drawing.Size(187, 26);
+            this.comboNum.TabIndex = 11;
+            this.comboNum.ValueMember = "RoomName";
+            this.comboNum.SelectedIndexChanged += new System.EventHandler(this.comboNum_SelectedIndexChanged);
             // 
-            // comboBox2
+            // comboWaiter
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(186, 172);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(101, 26);
-            this.comboBox2.TabIndex = 12;
+            this.comboWaiter.DataSource = this.tbWaiterBindingSource;
+            this.comboWaiter.DisplayMember = "WaiterNmae";
+            this.comboWaiter.FormattingEnabled = true;
+            this.comboWaiter.Location = new System.Drawing.Point(186, 175);
+            this.comboWaiter.Name = "comboWaiter";
+            this.comboWaiter.Size = new System.Drawing.Size(186, 26);
+            this.comboWaiter.TabIndex = 12;
+            this.comboWaiter.ValueMember = "WaiterNmae";
             // 
-            // comboBox3
+            // dateTimePicker1
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(553, 54);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(101, 26);
-            this.comboBox3.TabIndex = 13;
+            this.dateTimePicker1.Location = new System.Drawing.Point(553, 54);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(186, 28);
+            this.dateTimePicker1.TabIndex = 14;
+            // 
+            // mrCyDataSet
+            // 
+            this.mrCyDataSet.DataSetName = "MrCyDataSet";
+            this.mrCyDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tbRoomBindingSource
+            // 
+            this.tbRoomBindingSource.DataMember = "tb_Room";
+            this.tbRoomBindingSource.DataSource = this.mrCyDataSet;
+            // 
+            // tb_RoomTableAdapter
+            // 
+            this.tb_RoomTableAdapter.ClearBeforeFill = true;
+            // 
+            // tbWaiterBindingSource
+            // 
+            this.tbWaiterBindingSource.DataMember = "tb_Waiter";
+            this.tbWaiterBindingSource.DataSource = this.mrCyDataSet;
+            // 
+            // tb_WaiterTableAdapter
+            // 
+            this.tb_WaiterTableAdapter.ClearBeforeFill = true;
             // 
             // frmOpen
             // 
@@ -170,14 +209,14 @@
             this.BackgroundImage = global::MrCy.Properties.Resources.图片2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(803, 328);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.comboWaiter);
+            this.Controls.Add(this.comboNum);
+            this.Controls.Add(this.textBZ);
+            this.Controls.Add(this.textCustomerNum);
+            this.Controls.Add(this.textCustomerName);
+            this.Controls.Add(this.buttonExit);
+            this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -191,6 +230,9 @@
             this.ShowIcon = false;
             this.Text = "开台单";
             this.Load += new System.EventHandler(this.frmOpen_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.mrCyDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbRoomBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbWaiterBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,13 +246,18 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.Button buttonExit;
+        private System.Windows.Forms.TextBox textCustomerName;
+        private System.Windows.Forms.TextBox textCustomerNum;
+        private System.Windows.Forms.TextBox textBZ;
+        private System.Windows.Forms.ComboBox comboNum;
+        private System.Windows.Forms.ComboBox comboWaiter;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private MrCyDataSet mrCyDataSet;
+        private System.Windows.Forms.BindingSource tbRoomBindingSource;
+        private MrCyDataSetTableAdapters.tb_RoomTableAdapter tb_RoomTableAdapter;
+        private System.Windows.Forms.BindingSource tbWaiterBindingSource;
+        private MrCyDataSetTableAdapters.tb_WaiterTableAdapter tb_WaiterTableAdapter;
     }
 }
