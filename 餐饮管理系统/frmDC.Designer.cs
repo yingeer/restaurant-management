@@ -34,9 +34,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(698, 417);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmDC";
-            this.Text = "frmDC";
+            this.Text = "点菜";
             this.Load += new System.EventHandler(this.frmDC_Load);
             this.ResumeLayout(false);
 

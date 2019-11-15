@@ -206,7 +206,7 @@ namespace MrCy
                 con.Close();
             }
         }
-
+        
         private void 开台ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (listView1.SelectedItems.Count != 0)
