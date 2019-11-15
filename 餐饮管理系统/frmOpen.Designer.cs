@@ -28,10 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // frmOpen
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "frmOpen";
+            this.Name = "frmOpen";
+            this.Text = "开台单";
+            this.Load += new System.EventHandler(this.frmOpen_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

@@ -16,5 +16,10 @@ namespace MrCy
         {
             InitializeComponent();
         }
+
+        private void frmOpen_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
