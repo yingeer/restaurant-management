@@ -40,7 +40,6 @@
             this.textCustomerName = new System.Windows.Forms.TextBox();
             this.textCustomerNum = new System.Windows.Forms.TextBox();
             this.textBZ = new System.Windows.Forms.TextBox();
-            this.comboNum = new System.Windows.Forms.ComboBox();
             this.comboWaiter = new System.Windows.Forms.ComboBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.mrCyDataSet = new MrCy.MrCyDataSet();
@@ -48,6 +47,7 @@
             this.tb_RoomTableAdapter = new MrCy.MrCyDataSetTableAdapters.tb_RoomTableAdapter();
             this.tbWaiterBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tb_WaiterTableAdapter = new MrCy.MrCyDataSetTableAdapters.tb_WaiterTableAdapter();
+            this.textRname = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.mrCyDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbRoomBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbWaiterBindingSource)).BeginInit();
@@ -116,6 +116,7 @@
             this.buttonSave.TabIndex = 6;
             this.buttonSave.Text = "保存";
             this.buttonSave.UseVisualStyleBackColor = false;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // buttonExit
             // 
@@ -126,6 +127,7 @@
             this.buttonExit.TabIndex = 7;
             this.buttonExit.Text = "退出";
             this.buttonExit.UseVisualStyleBackColor = false;
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
             // textCustomerName
             // 
@@ -148,18 +150,6 @@
             this.textBZ.Name = "textBZ";
             this.textBZ.Size = new System.Drawing.Size(186, 28);
             this.textBZ.TabIndex = 10;
-            // 
-            // comboNum
-            // 
-            this.comboNum.DataSource = this.tbRoomBindingSource;
-            this.comboNum.DisplayMember = "RoomName";
-            this.comboNum.FormattingEnabled = true;
-            this.comboNum.Location = new System.Drawing.Point(185, 54);
-            this.comboNum.Name = "comboNum";
-            this.comboNum.Size = new System.Drawing.Size(187, 26);
-            this.comboNum.TabIndex = 11;
-            this.comboNum.ValueMember = "RoomName";
-            this.comboNum.SelectedIndexChanged += new System.EventHandler(this.comboNum_SelectedIndexChanged);
             // 
             // comboWaiter
             // 
@@ -202,6 +192,13 @@
             // 
             this.tb_WaiterTableAdapter.ClearBeforeFill = true;
             // 
+            // textRname
+            // 
+            this.textRname.Location = new System.Drawing.Point(186, 46);
+            this.textRname.Name = "textRname";
+            this.textRname.Size = new System.Drawing.Size(186, 28);
+            this.textRname.TabIndex = 15;
+            // 
             // frmOpen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -209,9 +206,9 @@
             this.BackgroundImage = global::MrCy.Properties.Resources.图片2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(803, 328);
+            this.Controls.Add(this.textRname);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.comboWaiter);
-            this.Controls.Add(this.comboNum);
             this.Controls.Add(this.textBZ);
             this.Controls.Add(this.textCustomerNum);
             this.Controls.Add(this.textCustomerName);
@@ -251,7 +248,6 @@
         private System.Windows.Forms.TextBox textCustomerName;
         private System.Windows.Forms.TextBox textCustomerNum;
         private System.Windows.Forms.TextBox textBZ;
-        private System.Windows.Forms.ComboBox comboNum;
         private System.Windows.Forms.ComboBox comboWaiter;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private MrCyDataSet mrCyDataSet;
@@ -259,5 +255,6 @@
         private MrCyDataSetTableAdapters.tb_RoomTableAdapter tb_RoomTableAdapter;
         private System.Windows.Forms.BindingSource tbWaiterBindingSource;
         private MrCyDataSetTableAdapters.tb_WaiterTableAdapter tb_WaiterTableAdapter;
+        private System.Windows.Forms.TextBox textRname;
     }
 }
