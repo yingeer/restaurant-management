@@ -174,7 +174,6 @@ namespace MrCy
             
             try
             {
-                
                 string sql = "select * from tb_Room where RoomName=N'" + roomName + "'";
                 SqlCommand cmd = new SqlCommand(sql, con);
                 this.sdr = cmd.ExecuteReader();
@@ -208,6 +207,21 @@ namespace MrCy
             finally
             {
                 con.Close();
+            }
+        }
+
+        private void 开台ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count != 0)
+            {
+                string name = listView1.SelectedItems[0].SubItems[0].Text.Substring(0, 5);
+                frmOpen openRoom = new frmOpen();
+                openRoom.Name = name;
+                openRoom.ShowDialog();
+            } 
+            else
+            {
+                MessageBox.Show("请选择桌台");
             }
         }
     }

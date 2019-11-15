@@ -61,7 +61,6 @@
             this.消费查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.结账ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -265,36 +264,37 @@
             this.消费查询ToolStripMenuItem,
             this.结账ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 154);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(241, 187);
             // 
             // 开台ToolStripMenuItem
             // 
             this.开台ToolStripMenuItem.Name = "开台ToolStripMenuItem";
-            this.开台ToolStripMenuItem.Size = new System.Drawing.Size(152, 30);
+            this.开台ToolStripMenuItem.Size = new System.Drawing.Size(240, 30);
             this.开台ToolStripMenuItem.Text = "开台";
+            this.开台ToolStripMenuItem.Click += new System.EventHandler(this.开台ToolStripMenuItem_Click);
             // 
             // 取消开台ToolStripMenuItem
             // 
             this.取消开台ToolStripMenuItem.Name = "取消开台ToolStripMenuItem";
-            this.取消开台ToolStripMenuItem.Size = new System.Drawing.Size(152, 30);
+            this.取消开台ToolStripMenuItem.Size = new System.Drawing.Size(240, 30);
             this.取消开台ToolStripMenuItem.Text = "取消开台";
             // 
             // 点加菜ToolStripMenuItem
             // 
             this.点加菜ToolStripMenuItem.Name = "点加菜ToolStripMenuItem";
-            this.点加菜ToolStripMenuItem.Size = new System.Drawing.Size(152, 30);
+            this.点加菜ToolStripMenuItem.Size = new System.Drawing.Size(240, 30);
             this.点加菜ToolStripMenuItem.Text = "点|加菜";
             // 
             // 消费查询ToolStripMenuItem
             // 
             this.消费查询ToolStripMenuItem.Name = "消费查询ToolStripMenuItem";
-            this.消费查询ToolStripMenuItem.Size = new System.Drawing.Size(152, 30);
+            this.消费查询ToolStripMenuItem.Size = new System.Drawing.Size(240, 30);
             this.消费查询ToolStripMenuItem.Text = "消费查询";
             // 
             // 结账ToolStripMenuItem
             // 
             this.结账ToolStripMenuItem.Name = "结账ToolStripMenuItem";
-            this.结账ToolStripMenuItem.Size = new System.Drawing.Size(152, 30);
+            this.结账ToolStripMenuItem.Size = new System.Drawing.Size(240, 30);
             this.结账ToolStripMenuItem.Text = "结账";
             // 
             // listView1
@@ -314,13 +314,6 @@
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged_1);
             this.listView1.Click += new System.EventHandler(this.listView1_Click);
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(49, 328);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 28);
-            this.textBox1.TabIndex = 20;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -328,7 +321,6 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(918, 580);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -380,6 +372,5 @@
         private System.Windows.Forms.ToolStripMenuItem 系统恢复ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 口令设置ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 系统锁定ToolStripMenuItem;
-        private System.Windows.Forms.TextBox textBox1;
     }
 }
