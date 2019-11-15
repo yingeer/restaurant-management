@@ -162,10 +162,7 @@ namespace MrCy
             SqlConnection con = BaseClass.DBConn.CyCon();
             try
             {
-                // 链接数据库
-                
                 con.Open();
-                
             }
             catch (Exception)
             {
@@ -179,7 +176,7 @@ namespace MrCy
                 this.sdr = cmd.ExecuteReader();
                 while (sdr.Read())
                 {
-                    // 对桌台状态进行判断
+                    // 右键 contextMenuStrip的显示控制
                     string roomZT = sdr["RoomZT"].ToString().Trim();
                     if (roomZT == "使用")
                     {
@@ -261,6 +258,36 @@ namespace MrCy
                 {
                     con.Close();
                 }
+            }
+            else
+            {
+                MessageBox.Show("请选择桌台");
+            }
+        }
+
+        private void 点加菜ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count != 0)
+            {
+                string name = listView1.SelectedItems[0].SubItems[0].Text.Substring(0, 5);
+                frmDC frmdc = new frmDC();
+                frmdc.Rname = name;
+                frmdc.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("请选择桌台");
+            }
+        }
+
+        private void 消费查询ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count != 0)
+            {
+                string name = listView1.SelectedItems[0].SubItems[0].Text.Substring(0, 5);
+                frmSearch search = new frmSearch();
+                search.Rname = name;
+                search.ShowDialog();
             }
             else
             {

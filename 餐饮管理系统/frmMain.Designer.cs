@@ -285,12 +285,14 @@
             this.点加菜ToolStripMenuItem.Name = "点加菜ToolStripMenuItem";
             this.点加菜ToolStripMenuItem.Size = new System.Drawing.Size(240, 30);
             this.点加菜ToolStripMenuItem.Text = "点|加菜";
+            this.点加菜ToolStripMenuItem.Click += new System.EventHandler(this.点加菜ToolStripMenuItem_Click);
             // 
             // 消费查询ToolStripMenuItem
             // 
             this.消费查询ToolStripMenuItem.Name = "消费查询ToolStripMenuItem";
             this.消费查询ToolStripMenuItem.Size = new System.Drawing.Size(240, 30);
             this.消费查询ToolStripMenuItem.Text = "消费查询";
+            this.消费查询ToolStripMenuItem.Click += new System.EventHandler(this.消费查询ToolStripMenuItem_Click);
             // 
             // 结账ToolStripMenuItem
             // 

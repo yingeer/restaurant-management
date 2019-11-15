@@ -12,9 +12,15 @@ namespace MrCy
 {
     public partial class frmSearch : Form
     {
+        public string Rname;
         public frmSearch()
         {
             InitializeComponent();
+        }
+
+        private void frmSearch_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
