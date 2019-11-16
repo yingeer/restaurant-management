@@ -86,23 +86,26 @@ namespace MrCy
 
             // 消费编号
             string customID = "1";
+
             try
             {
                 string sql = "select max(zhangdanID) as customID from tb_GuestFood";
                 SqlCommand cmd = new SqlCommand(sql, con);
                 SqlDataReader sdr = cmd.ExecuteReader();
+                 
                 sdr.Read();
-                customID = (int.Parse(sdr["customID"].ToString().Trim()) + 1).ToString();
+                customID = (int.Parse(sdr["customID"].ToString().Trim())+1).ToString();
                 sdr.Close();
             }
             catch (Exception)
             {
-                /* MessageBox.Show("获取消费编号失败;");*/
+                MessageBox.Show("获取消费编号失败;");
             }
             finally
             {
                 this.toolStripStatusLabel2.Text = customID;
                 this.customID = customID;
+             
             }
         }
 
@@ -164,6 +167,7 @@ namespace MrCy
                 }
                 sdr.Close();
             }
+            // 点菜编号
             string itemNum = "1";
             try
             {
