@@ -328,7 +328,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.BackgroundImage = global::MrCy.Properties.Resources.图片2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(833, 562);
+            this.ClientSize = new System.Drawing.Size(833, 540);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textWaiterName);

@@ -11,13 +11,13 @@ using System.Data.SqlClient;
 
 namespace MrCy
 {
-    
+
     public partial class frmDC : Form
     {
-        public string Rname="大厅-01";
+        public string Rname = "大厅-01";
         private string waiterName = "";
         private SqlConnection con;
-        private int curPrice = 1;
+        private string curPrice = "";
         public frmDC()
         {
             InitializeComponent();
@@ -31,7 +31,7 @@ namespace MrCy
             {
                 con.Open();
             }
-            catch(Exception)
+            catch (Exception)
             {
                 MessageBox.Show("数据库连接失败");
 
@@ -40,10 +40,10 @@ namespace MrCy
             try
             {
                 string[] foodType = { "锅底", "主食", "配菜", "烟酒" };
-                for (int i=0; i<foodType.Length; i++)
+                for (int i = 0; i < foodType.Length; i++)
                 {
                     TreeNode treeNode = treeView1.Nodes[i];
-                    string sql = "select * from tb_Food where FoodTy=N'" + foodType[i] +"'";
+                    string sql = "select * from tb_Food where FoodTy=N'" + foodType[i] + "'";
                     SqlCommand cmd = new SqlCommand(sql, con);
                     SqlDataReader sdr = cmd.ExecuteReader();
                     while (sdr.Read())
@@ -55,7 +55,7 @@ namespace MrCy
                 try
                 {
                     // 判断桌台状态，空闲则禁用
-                    string sql = "select * from tb_Room where RoomName=N'"+this.Rname+"'";
+                    string sql = "select * from tb_Room where RoomName=N'" + this.Rname + "'";
                     SqlCommand cmd = new SqlCommand(sql, con);
                     SqlDataReader sdr = cmd.ExecuteReader();
                     sdr.Read();
@@ -68,14 +68,14 @@ namespace MrCy
                     }
                     sdr.Close();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-                    MessageBox.Show(ex+"");
+                    MessageBox.Show(ex + "");
                 }
-                
+
                 treeView1.ExpandAll();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("加载菜品信息失败" + ex);
             }
@@ -110,37 +110,37 @@ namespace MrCy
         {
 
             string foodName = "";
-            // 在treeView中选择一项
+            // 在treeView中选择一项, 防止乱双击
             try
             {
                 foodName = treeView1.SelectedNode.Text.ToString().Trim();
             }
-            catch(Exception)
+            catch (Exception)
             {
             }
 
             string[] foodType = { "锅底", "主食", "配菜", "烟酒" };
+            // 点到foodtype就跳过
             if (foodType.Contains(foodName))
             {
             }
             else
             {
                 // 获得该菜品信息
-                string sql = "select * from tb_Food where FoodName=N'"+foodName+"'";
+                string sql = "select * from tb_Food where FoodName=N'" + foodName + "'";
                 SqlCommand cmd = new SqlCommand(sql, con);
-                SqlDataReader sdr =  cmd.ExecuteReader();
-                
-                    while (sdr.Read())
-                    {
+                SqlDataReader sdr = cmd.ExecuteReader();
+                while (sdr.Read())
+                {
 
-                        // 将信息显示到右侧表单
-                        string price = sdr["FoodPrice"].ToString().Trim();
-                        this.textPrice.Text = price; // 该food单个价格
-                                                     /*this.curPrice = int.Parse(price); */// price传给curPrice
-                        this.textName.Text = foodName;
-                        this.textWaiterName.Text = this.waiterName;
-                        this.textNumber.Text = "1";
-                   
+                    // 将信息显示到右侧表单
+                    string price = sdr["FoodPrice"].ToString().Trim();
+                    this.textPrice.Text = price; // 该food单个价格
+                    this.curPrice = price; //传给this.curPrice,给计算按钮用
+                    this.textName.Text = foodName;
+                    this.textWaiterName.Text = this.waiterName;
+                    this.textNumber.Text = "1";
+
                 }
                 sdr.Close();
 
@@ -154,17 +154,17 @@ namespace MrCy
                 SqlCommand cmd = new SqlCommand(sql, con);
                 SqlDataReader sdr = cmd.ExecuteReader();
                 sdr.Read();
-                customID = (int.Parse(sdr["total"].ToString().Trim())+1).ToString();
+                customID = (int.Parse(sdr["total"].ToString().Trim()) + 1).ToString();
                 sdr.Close();
             }
-            catch(Exception)
+            catch (Exception)
             {
-               /* MessageBox.Show("获取消费编号失败;");*/
+                /* MessageBox.Show("获取消费编号失败;");*/
             }
             finally
             {
                 this.textNum.Text = customID;
-                
+
             }
 
         }
@@ -181,8 +181,17 @@ namespace MrCy
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (this.textNumber.Text == "")
+            {
+                this.textNumber.Text = "1";
+                MessageBox.Show("请输入消费数量");
+            }
+            if (this.textPrice.Text == "")
+            {
+                this.textPrice.Text = this.curPrice;
+            }
             // 该商品此次消费总价
-            this.textAllPrice.Text = (this.curPrice * int.Parse(this.textNumber.Text)).ToString();
+            this.textAllPrice.Text = (double.Parse(this.curPrice) * int.Parse(this.textNumber.Text)).ToString();
         }
     }
 }
