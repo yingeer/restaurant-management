@@ -63,6 +63,7 @@ namespace MrCy
                         this.buttonDelete.Enabled = false;
                         MessageBox.Show("此桌台为空闲状态");
                     }
+                    sdr.Close();
                 }
                 catch(Exception ex)
                 {
@@ -75,8 +76,6 @@ namespace MrCy
             {
                 MessageBox.Show("加载菜品信息失败" + ex);
             }
-
-           
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -97,6 +96,52 @@ namespace MrCy
         private void frmDC_FormClosed(object sender, FormClosedEventArgs e)
         {
             con.Close();
+
+        }
+
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
+        }
+
+        private void treeView1_DoubleClick(object sender, EventArgs e)
+        {
+
+            string foodName = "";
+            // 在treeView中选择一项
+            try
+            {
+                foodName = treeView1.SelectedNode.Text.ToString().Trim();
+            }
+            catch(Exception)
+            {
+
+            }
+
+
+            string[] foodType = { "锅底", "主食", "配菜", "烟酒" };
+            if (foodType.Contains(foodName))
+            {
+            }
+            else
+            {
+                // 获得该菜品信息
+                string sql = "select * from tb_Food where FoodName=N'"+foodName+"'";
+                SqlCommand cmd = new SqlCommand(sql, con);
+                SqlDataReader sdr =  cmd.ExecuteReader();
+                while (sdr.Read())
+                {
+                    // 将信息显示到右侧表单
+                    string price = sdr["FoodPrice"].ToString().Trim();
+                    this.textPrice.Text = price;
+                    this.textName.Text = foodName;
+                    /*this.textAllPrice.Text = (Convert.ToInt32(price) * Convert.ToInt32(this.textNumber.Text)).ToString().Trim();*/
+
+
+
+                }
+                sdr.Close();
+            }
 
         }
     }
