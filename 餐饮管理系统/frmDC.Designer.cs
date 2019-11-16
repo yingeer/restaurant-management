@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("锅底");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("配菜");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("主食");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("烟酒");
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("锅底");
+            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("配菜");
+            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("主食");
+            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("烟酒");
             this.textName = new System.Windows.Forms.TextBox();
             this.textNum = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -41,12 +42,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.c1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.c2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.c3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.c4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.c5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
@@ -60,7 +55,15 @@
             this.textWaiterName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.mrCyDataSet = new MrCy.MrCyDataSet();
+            this.tbGuestFoodBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tb_GuestFoodTableAdapter = new MrCy.MrCyDataSetTableAdapters.tb_GuestFoodTableAdapter();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            ((System.ComponentModel.ISupportInitialize)(this.mrCyDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbGuestFoodBindingSource)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textName
@@ -130,82 +133,30 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(98, 18);
             this.label1.TabIndex = 8;
-            this.label1.Text = "菜单编号：";
+            this.label1.Text = "点菜编号：";
             // 
             // treeView1
             // 
             this.treeView1.Location = new System.Drawing.Point(25, 82);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "guodi";
-            treeNode1.Text = "锅底";
-            treeNode1.ToolTipText = "菜品";
-            treeNode2.Name = "peicai";
-            treeNode2.Text = "配菜";
-            treeNode3.Name = "zhushi";
-            treeNode3.Text = "主食";
-            treeNode4.Name = "yanjiu";
-            treeNode4.Text = "烟酒";
+            treeNode29.Name = "guodi";
+            treeNode29.Text = "锅底";
+            treeNode29.ToolTipText = "菜品";
+            treeNode30.Name = "peicai";
+            treeNode30.Text = "配菜";
+            treeNode31.Name = "zhushi";
+            treeNode31.Text = "主食";
+            treeNode32.Name = "yanjiu";
+            treeNode32.Text = "烟酒";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode4});
+            treeNode29,
+            treeNode30,
+            treeNode31,
+            treeNode32});
             this.treeView1.Size = new System.Drawing.Size(218, 430);
             this.treeView1.TabIndex = 16;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.c1,
-            this.c2,
-            this.c3,
-            this.c4,
-            this.c5});
-            this.dataGridView1.Location = new System.Drawing.Point(289, 308);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 30;
-            this.dataGridView1.Size = new System.Drawing.Size(518, 204);
-            this.dataGridView1.TabIndex = 17;
-            // 
-            // c1
-            // 
-            this.c1.HeaderText = "菜名";
-            this.c1.MinimumWidth = 8;
-            this.c1.Name = "c1";
-            this.c1.Width = 150;
-            // 
-            // c2
-            // 
-            this.c2.HeaderText = "数量";
-            this.c2.MinimumWidth = 8;
-            this.c2.Name = "c2";
-            this.c2.Width = 150;
-            // 
-            // c3
-            // 
-            this.c3.HeaderText = "总价";
-            this.c3.MinimumWidth = 8;
-            this.c3.Name = "c3";
-            this.c3.Width = 150;
-            // 
-            // c4
-            // 
-            this.c4.HeaderText = "服务员";
-            this.c4.MinimumWidth = 8;
-            this.c4.Name = "c4";
-            this.c4.Width = 150;
-            // 
-            // c5
-            // 
-            this.c5.HeaderText = "备注";
-            this.c5.MinimumWidth = 8;
-            this.c5.Name = "c5";
-            this.c5.Width = 150;
             // 
             // buttonSave
             // 
@@ -321,6 +272,44 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // mrCyDataSet
+            // 
+            this.mrCyDataSet.DataSetName = "MrCyDataSet";
+            this.mrCyDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tbGuestFoodBindingSource
+            // 
+            this.tbGuestFoodBindingSource.DataMember = "tb_GuestFood";
+            this.tbGuestFoodBindingSource.DataSource = this.mrCyDataSet;
+            // 
+            // tb_GuestFoodTableAdapter
+            // 
+            this.tb_GuestFoodTableAdapter.ClearBeforeFill = true;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabel2});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 509);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(833, 31);
+            this.statusStrip1.TabIndex = 33;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(100, 24);
+            this.toolStripStatusLabel1.Text = "消费编号：";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(71, 24);
+            this.toolStripStatusLabel2.Text = "default";
+            // 
             // frmDC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -329,6 +318,7 @@
             this.BackgroundImage = global::MrCy.Properties.Resources.图片2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(833, 540);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textWaiterName);
@@ -342,7 +332,6 @@
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonSave);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.treeView1);
             this.Controls.Add(this.textName);
             this.Controls.Add(this.textNum);
@@ -360,7 +349,10 @@
             this.Text = "点菜";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmDC_FormClosed);
             this.Load += new System.EventHandler(this.frmDC_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mrCyDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbGuestFoodBindingSource)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -377,7 +369,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TreeView treeView1;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonExit;
@@ -387,14 +378,15 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textAllPrice;
         private System.Windows.Forms.TextBox textBZ;
-        private System.Windows.Forms.DataGridViewTextBoxColumn c1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn c2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn c3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn c4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn c5;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textWaiterName;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button1;
+        private MrCyDataSet mrCyDataSet;
+        private System.Windows.Forms.BindingSource tbGuestFoodBindingSource;
+        private MrCyDataSetTableAdapters.tb_GuestFoodTableAdapter tb_GuestFoodTableAdapter;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
     }
 }

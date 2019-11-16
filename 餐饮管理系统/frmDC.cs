@@ -18,6 +18,7 @@ namespace MrCy
         private string waiterName = "";
         private SqlConnection con;
         private string curPrice = "";
+        private string customID = "1";
         public frmDC()
         {
             InitializeComponent();
@@ -25,6 +26,9 @@ namespace MrCy
 
         private void frmDC_Load(object sender, EventArgs e)
         {
+
+            // TODO: 这行代码将数据加载到表“mrCyDataSet.tb_GuestFood”中。您可以根据需要移动或删除它。
+            this.tb_GuestFoodTableAdapter.Fill(this.mrCyDataSet.tb_GuestFood);
             this.Text = this.Rname + " 点菜";
             con = BaseClass.DBConn.CyCon();
             try
@@ -79,14 +83,30 @@ namespace MrCy
             {
                 MessageBox.Show("加载菜品信息失败" + ex);
             }
+
+            // 消费编号
+            string customID = "1";
+            try
+            {
+                string sql = "select max(zhangdanID) as customID from tb_GuestFood";
+                SqlCommand cmd = new SqlCommand(sql, con);
+                SqlDataReader sdr = cmd.ExecuteReader();
+                sdr.Read();
+                customID = (int.Parse(sdr["customID"].ToString().Trim()) + 1).ToString();
+                sdr.Close();
+            }
+            catch (Exception)
+            {
+                /* MessageBox.Show("获取消费编号失败;");*/
+            }
+            finally
+            {
+                this.toolStripStatusLabel2.Text = customID;
+                this.customID = customID;
+            }
         }
 
         private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
         {
 
         }
@@ -143,27 +163,24 @@ namespace MrCy
 
                 }
                 sdr.Close();
-
-
             }
-            // 消费菜单编号
-            string customID = "1";
+            string itemNum = "1";
             try
             {
-                string sql = "select count(ID) as total from tb_GuestFood";
+                string sql = "select count(ID) as curNum from tb_GuestFood where zhangdanID=N'"+this.customID+"'";
                 SqlCommand cmd = new SqlCommand(sql, con);
                 SqlDataReader sdr = cmd.ExecuteReader();
                 sdr.Read();
-                customID = (int.Parse(sdr["total"].ToString().Trim()) + 1).ToString();
+                itemNum = (int.Parse(sdr["curNum"].ToString().Trim()) + 1).ToString();
                 sdr.Close();
             }
             catch (Exception)
             {
-                /* MessageBox.Show("获取消费编号失败;");*/
+                /* MessageBox.Show("获取失败;");*/
             }
             finally
             {
-                this.textNum.Text = customID;
+                this.textNum.Text = itemNum;
 
             }
 
@@ -195,7 +212,3 @@ namespace MrCy
         }
     }
 }
-/*
-                   
-                    
-*/
