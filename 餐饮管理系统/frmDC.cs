@@ -19,8 +19,8 @@ namespace MrCy
         private SqlConnection con;
         private string curPrice = "";
         private string customID = "1";
-      
         
+
         public frmDC()
         {
             InitializeComponent();
@@ -209,13 +209,14 @@ namespace MrCy
         
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            int IDNum = getIDoFmenu();
+            int nextMenuID = getIDOfMenu() + 1;
+            
             try
-            {
+            {    
                 string sql = "insert into tb_GuestFood (ID, foodname, foodsum, foodallprice, waitername, beizhu, zhuotai, zhangdanID) " +
                     "values (" +
-                    int.Parse(this.textNum.Text)+IDNum + ", N'" + this.textName.Text +
-                "'," + int.Parse(this.textNumber.Text) + "," + int.Parse(this.textAllPrice.Text) +
+                    nextMenuID + ", N'" + this.textName.Text +
+                "'," + int.Parse(this.textNumber.Text) + "," + float.Parse(this.textAllPrice.Text) +
                 ", N'" + this.waiterName + "',N'" + this.textBZ.Text +
                 "', N'" + this.Rname + "', " + int.Parse(this.customID) +
                ")";
@@ -223,14 +224,16 @@ namespace MrCy
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("保存成功");
             } 
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("请不要重复保存相同菜品");
+                MessageBox.Show("请不要保存点菜号相同的菜品" + ex);
             }
             
+            // 刷新dataGridView
+
         }
 
-        private int getIDoFmenu()
+        private int getIDOfMenu()
         {
             int IDNum = 0;
             string sql = "select count(ID) as total from tb_GuestFood";
@@ -243,8 +246,8 @@ namespace MrCy
             }
             catch (Exception)
             {
-                
-                /*MessageBox.Show("获取消费编号失败;");*/
+
+                MessageBox.Show("获取消费编号失败;");
             }
             finally
             {
@@ -262,6 +265,34 @@ namespace MrCy
             {
                 MessageBox.Show("删除数据失败");
             }
+        }
+
+        private void treeView1_Click(object sender, EventArgs e)
+        {
+            // 单击查看菜品
+            string foodName = "";
+            try
+            {
+                foodName = treeView1.SelectedNode.Text.ToString().Trim();
+            }
+            catch (Exception)
+            {
+                
+            }
+            // 查找数据
+            SqlDataReader sdr = queryFoodInThisCustom(foodName);
+            // 展现数据
+            this.textAllPrice.Text = sdr["foodallprice"].ToString().Trim();
+            sdr.Close();
+        }
+
+        private SqlDataReader queryFoodInThisCustom(string foodName)
+        {
+            string sql = "select * from tb_GuestFood where foodname=N'"+foodName+"' and "+ "zhangdanID="+int.Parse(this.customID);
+            SqlCommand cmd = new SqlCommand(sql, con);
+            SqlDataReader sdr = cmd.ExecuteReader();
+            sdr.Read();
+            return sdr;
         }
     }
 }
