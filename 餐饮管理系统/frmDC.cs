@@ -19,6 +19,8 @@ namespace MrCy
         private SqlConnection con;
         private string curPrice = "";
         private string customID = "1";
+      
+        
         public frmDC()
         {
             InitializeComponent();
@@ -85,31 +87,39 @@ namespace MrCy
                 MessageBox.Show("加载菜品信息失败" + ex);
             }
 
+            // 设置CustomerID
+            string customID = getCurCustomID();
+            this.toolStripStatusLabel2.Text = customID;
+            this.customID = customID;
+
+        }
+
+        private string getCurCustomID()
+        {
             // 消费编号
             string customID = "1";
 
-            try
-            {
-                string sql = "select max(zhangdanID) as customID from tb_GuestFood";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                SqlDataReader sdr = cmd.ExecuteReader();
-                 
+            string sql = "select max(zhangdanID) as customID from tb_GuestFood";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            SqlDataReader sdr = cmd.ExecuteReader();
+            try { 
                 sdr.Read();
-                customID = (int.Parse(sdr["customID"].ToString().Trim())+1).ToString();
-                sdr.Close();
+                customID = (int.Parse(sdr["customID"].ToString().Trim()) + 1).ToString();
+                
             }
             catch (Exception)
             {
-                MessageBox.Show("获取消费编号失败;");
+                
+                /*MessageBox.Show("获取消费编号失败;");*/
             }
             finally
             {
-                this.toolStripStatusLabel2.Text = customID;
-                this.customID = customID;
-             
+                sdr.Close();
             }
-        }
 
+            return customID;
+           
+        }
         private void label4_Click(object sender, EventArgs e)
         {
 
@@ -138,6 +148,7 @@ namespace MrCy
             try
             {
                 foodName = treeView1.SelectedNode.Text.ToString().Trim();
+                
             }
             catch (Exception)
             {
@@ -149,46 +160,26 @@ namespace MrCy
             {
             }
             else
-            {
-                // 获得该菜品信息
-                string sql = "select * from tb_Food where FoodName=N'" + foodName + "'";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                SqlDataReader sdr = cmd.ExecuteReader();
-                while (sdr.Read())
-                {
+            { 
+                    // 获得该菜品信息
+                    string sql = "select * from tb_Food where FoodName=N'" + foodName + "'";
+                    SqlCommand cmd = new SqlCommand(sql, con);
+                    SqlDataReader sdr = cmd.ExecuteReader();
+                    while (sdr.Read())
+                    {
 
-                    // 将信息显示到右侧表单
-                    string price = sdr["FoodPrice"].ToString().Trim();
-                    this.textPrice.Text = price; // 该food单个价格
-                    this.curPrice = price; //传给this.curPrice,给计算按钮用
-                    this.textName.Text = foodName;
-                    this.textWaiterName.Text = this.waiterName;
-                    this.textNumber.Text = "1";
+                        // 将信息显示到右侧表单
+                        string price = sdr["FoodPrice"].ToString().Trim();
+                        this.textPrice.Text = price; // 该food单个价格
+                        this.curPrice = price; //传给this.curPrice,给计算按钮用
+                        this.textName.Text = foodName;
+                        this.textWaiterName.Text = this.waiterName;
+                        this.textNumber.Text = "1";
 
+                    }
+                    sdr.Close();
                 }
-                sdr.Close();
-            }
-            // 点菜编号
-            string itemNum = "1";
-            try
-            {
-                string sql = "select count(ID) as curNum from tb_GuestFood where zhangdanID=N'"+this.customID+"'";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                SqlDataReader sdr = cmd.ExecuteReader();
-                sdr.Read();
-                itemNum = (int.Parse(sdr["curNum"].ToString().Trim()) + 1).ToString();
-                sdr.Close();
-            }
-            catch (Exception)
-            {
-                /* MessageBox.Show("获取失败;");*/
-            }
-            finally
-            {
-                this.textNum.Text = itemNum;
-
-            }
-
+                
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
@@ -214,6 +205,63 @@ namespace MrCy
             }
             // 该商品此次消费总价
             this.textAllPrice.Text = (double.Parse(this.curPrice) * int.Parse(this.textNumber.Text)).ToString();
+        }
+        
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            int IDNum = getIDoFmenu();
+            try
+            {
+                string sql = "insert into tb_GuestFood (ID, foodname, foodsum, foodallprice, waitername, beizhu, zhuotai, zhangdanID) " +
+                    "values (" +
+                    int.Parse(this.textNum.Text)+IDNum + ", N'" + this.textName.Text +
+                "'," + int.Parse(this.textNumber.Text) + "," + int.Parse(this.textAllPrice.Text) +
+                ", N'" + this.waiterName + "',N'" + this.textBZ.Text +
+                "', N'" + this.Rname + "', " + int.Parse(this.customID) +
+               ")";
+                SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("保存成功");
+            } 
+            catch (Exception)
+            {
+                MessageBox.Show("请不要重复保存相同菜品");
+            }
+            
+        }
+
+        private int getIDoFmenu()
+        {
+            int IDNum = 0;
+            string sql = "select count(ID) as total from tb_GuestFood";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            SqlDataReader sdr = cmd.ExecuteReader();
+            try
+            {
+                sdr.Read();
+                IDNum = int.Parse(sdr["total"].ToString().Trim());
+            }
+            catch (Exception)
+            {
+                
+                /*MessageBox.Show("获取消费编号失败;");*/
+            }
+            finally
+            {
+                sdr.Close();
+            }
+            return IDNum;
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            string sql = "";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            int rows = cmd.ExecuteNonQuery();
+            if (rows <= 0)
+            {
+                MessageBox.Show("删除数据失败");
+            }
         }
     }
 }

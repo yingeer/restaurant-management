@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode53 = new System.Windows.Forms.TreeNode("锅底");
-            System.Windows.Forms.TreeNode treeNode54 = new System.Windows.Forms.TreeNode("配菜");
-            System.Windows.Forms.TreeNode treeNode55 = new System.Windows.Forms.TreeNode("主食");
-            System.Windows.Forms.TreeNode treeNode56 = new System.Windows.Forms.TreeNode("烟酒");
+            System.Windows.Forms.TreeNode treeNode61 = new System.Windows.Forms.TreeNode("锅底");
+            System.Windows.Forms.TreeNode treeNode62 = new System.Windows.Forms.TreeNode("配菜");
+            System.Windows.Forms.TreeNode treeNode63 = new System.Windows.Forms.TreeNode("主食");
+            System.Windows.Forms.TreeNode treeNode64 = new System.Windows.Forms.TreeNode("烟酒");
             this.textName = new System.Windows.Forms.TextBox();
             this.textNum = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -148,20 +148,20 @@
             // 
             this.treeView1.Location = new System.Drawing.Point(25, 82);
             this.treeView1.Name = "treeView1";
-            treeNode53.Name = "guodi";
-            treeNode53.Text = "锅底";
-            treeNode53.ToolTipText = "菜品";
-            treeNode54.Name = "peicai";
-            treeNode54.Text = "配菜";
-            treeNode55.Name = "zhushi";
-            treeNode55.Text = "主食";
-            treeNode56.Name = "yanjiu";
-            treeNode56.Text = "烟酒";
+            treeNode61.Name = "guodi";
+            treeNode61.Text = "锅底";
+            treeNode61.ToolTipText = "菜品";
+            treeNode62.Name = "peicai";
+            treeNode62.Text = "配菜";
+            treeNode63.Name = "zhushi";
+            treeNode63.Text = "主食";
+            treeNode64.Name = "yanjiu";
+            treeNode64.Text = "烟酒";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode53,
-            treeNode54,
-            treeNode55,
-            treeNode56});
+            treeNode61,
+            treeNode62,
+            treeNode63,
+            treeNode64});
             this.treeView1.Size = new System.Drawing.Size(218, 430);
             this.treeView1.TabIndex = 16;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -176,6 +176,7 @@
             this.buttonSave.TabIndex = 18;
             this.buttonSave.Text = "保存";
             this.buttonSave.UseVisualStyleBackColor = false;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // buttonDelete
             // 
@@ -186,6 +187,7 @@
             this.buttonDelete.TabIndex = 19;
             this.buttonDelete.Text = "删除";
             this.buttonDelete.UseVisualStyleBackColor = false;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // buttonExit
             // 
