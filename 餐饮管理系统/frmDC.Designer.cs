@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("锅底");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("配菜");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("主食");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("烟酒");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("锅底");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("配菜");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("主食");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("烟酒");
             this.textName = new System.Windows.Forms.TextBox();
             this.textNum = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -51,7 +51,6 @@
             this.textNumber = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.textAllPrice = new System.Windows.Forms.TextBox();
-            this.comboWaiterName = new System.Windows.Forms.ComboBox();
             this.textBZ = new System.Windows.Forms.TextBox();
             this.c1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.c2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +58,7 @@
             this.c4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.c5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label10 = new System.Windows.Forms.Label();
+            this.textWaiterName = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -135,20 +135,20 @@
             // 
             this.treeView1.Location = new System.Drawing.Point(25, 82);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "guodi";
-            treeNode1.Text = "锅底";
-            treeNode1.ToolTipText = "菜品";
-            treeNode2.Name = "peicai";
-            treeNode2.Text = "配菜";
-            treeNode3.Name = "zhushi";
-            treeNode3.Text = "主食";
-            treeNode4.Name = "yanjiu";
-            treeNode4.Text = "烟酒";
+            treeNode5.Name = "guodi";
+            treeNode5.Text = "锅底";
+            treeNode5.ToolTipText = "菜品";
+            treeNode6.Name = "peicai";
+            treeNode6.Text = "配菜";
+            treeNode7.Name = "zhushi";
+            treeNode7.Text = "主食";
+            treeNode8.Name = "yanjiu";
+            treeNode8.Text = "烟酒";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode4});
+            treeNode5,
+            treeNode6,
+            treeNode7,
+            treeNode8});
             this.treeView1.Size = new System.Drawing.Size(218, 430);
             this.treeView1.TabIndex = 16;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -200,6 +200,7 @@
             this.buttonExit.TabIndex = 20;
             this.buttonExit.Text = "退出";
             this.buttonExit.UseVisualStyleBackColor = false;
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
             // label7
             // 
@@ -249,14 +250,6 @@
             this.textAllPrice.Name = "textAllPrice";
             this.textAllPrice.Size = new System.Drawing.Size(103, 28);
             this.textAllPrice.TabIndex = 26;
-            // 
-            // comboWaiterName
-            // 
-            this.comboWaiterName.FormattingEnabled = true;
-            this.comboWaiterName.Location = new System.Drawing.Point(451, 180);
-            this.comboWaiterName.Name = "comboWaiterName";
-            this.comboWaiterName.Size = new System.Drawing.Size(102, 26);
-            this.comboWaiterName.TabIndex = 27;
             // 
             // textBZ
             // 
@@ -310,6 +303,13 @@
             this.label10.Text = "菜品";
             this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
+            // textWaiterName
+            // 
+            this.textWaiterName.Location = new System.Drawing.Point(455, 180);
+            this.textWaiterName.Name = "textWaiterName";
+            this.textWaiterName.Size = new System.Drawing.Size(82, 28);
+            this.textWaiterName.TabIndex = 30;
+            // 
             // frmDC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -317,9 +317,9 @@
             this.BackgroundImage = global::MrCy.Properties.Resources.图片2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(833, 562);
+            this.Controls.Add(this.textWaiterName);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.textBZ);
-            this.Controls.Add(this.comboWaiterName);
             this.Controls.Add(this.textAllPrice);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.textNumber);
@@ -374,7 +374,6 @@
         private System.Windows.Forms.TextBox textNumber;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textAllPrice;
-        private System.Windows.Forms.ComboBox comboWaiterName;
         private System.Windows.Forms.TextBox textBZ;
         private System.Windows.Forms.DataGridViewTextBoxColumn c1;
         private System.Windows.Forms.DataGridViewTextBoxColumn c2;
@@ -382,5 +381,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn c4;
         private System.Windows.Forms.DataGridViewTextBoxColumn c5;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textWaiterName;
     }
 }

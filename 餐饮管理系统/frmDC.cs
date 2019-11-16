@@ -15,6 +15,7 @@ namespace MrCy
     public partial class frmDC : Form
     {
         public string Rname="大厅-01";
+        private string waiterName = "";
         private SqlConnection con;
         public frmDC()
         {
@@ -57,6 +58,7 @@ namespace MrCy
                     SqlCommand cmd = new SqlCommand(sql, con);
                     SqlDataReader sdr = cmd.ExecuteReader();
                     sdr.Read();
+                    this.waiterName = sdr["WaiterName"].ToString().Trim();
                     if (sdr["RoomZT"].ToString().Trim() == "空闲")
                     {
                         this.buttonSave.Enabled = false;
@@ -117,8 +119,6 @@ namespace MrCy
             {
 
             }
-
-
             string[] foodType = { "锅底", "主食", "配菜", "烟酒" };
             if (foodType.Contains(foodName))
             {
@@ -135,14 +135,43 @@ namespace MrCy
                     string price = sdr["FoodPrice"].ToString().Trim();
                     this.textPrice.Text = price;
                     this.textName.Text = foodName;
+                    this.textWaiterName.Text = this.waiterName;
                     /*this.textAllPrice.Text = (Convert.ToInt32(price) * Convert.ToInt32(this.textNumber.Text)).ToString().Trim();*/
-
-
 
                 }
                 sdr.Close();
             }
+            // 消费菜单编号
+            string customID = "1";
+            try
+            {
+                string sql = "select ID from tb_GuestFood where zhuotai=N'"+Rname+"'";
+                SqlCommand cmd = new SqlCommand(sql, con);
+                SqlDataReader sdr = cmd.ExecuteReader();
+                sdr.Read();
+                customID = sdr["ID"].ToString().Trim();
 
+            }
+            catch(Exception)
+            {
+               /* MessageBox.Show("获取消费编号失败;");*/
+            }
+            finally
+            {
+                this.textNum.Text = customID;
+            }
+
+        }
+
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            DialogResult dia = MessageBox.Show("确定退出吗？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+            if (dia == DialogResult.OK)
+            {
+                con.Close();
+                this.Close();
+
+            }
         }
     }
 }
