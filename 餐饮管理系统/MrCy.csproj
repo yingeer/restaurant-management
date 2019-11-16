@@ -140,6 +140,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MrCyDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="MrCyDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MrCyDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmBF.resx">
@@ -198,6 +203,17 @@
     </None>
     <None Include="MrCyDataSet.xss">
       <DependentUpon>MrCyDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="MrCyDataSet1.xsc">
+      <DependentUpon>MrCyDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="MrCyDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MrCyDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MrCyDataSet1.xss">
+      <DependentUpon>MrCyDataSet1.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

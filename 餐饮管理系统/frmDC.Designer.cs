@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("锅底");
-            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("配菜");
-            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("主食");
-            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("烟酒");
+            System.Windows.Forms.TreeNode treeNode53 = new System.Windows.Forms.TreeNode("锅底");
+            System.Windows.Forms.TreeNode treeNode54 = new System.Windows.Forms.TreeNode("配菜");
+            System.Windows.Forms.TreeNode treeNode55 = new System.Windows.Forms.TreeNode("主食");
+            System.Windows.Forms.TreeNode treeNode56 = new System.Windows.Forms.TreeNode("烟酒");
             this.textName = new System.Windows.Forms.TextBox();
             this.textNum = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -55,15 +55,24 @@
             this.textWaiterName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.mrCyDataSet = new MrCy.MrCyDataSet();
-            this.tbGuestFoodBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tb_GuestFoodTableAdapter = new MrCy.MrCyDataSetTableAdapters.tb_GuestFoodTableAdapter();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.mrCyDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbGuestFoodBindingSource)).BeginInit();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.mrCyDataSet1 = new MrCy.MrCyDataSet1();
+            this.tbGuestFoodBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tb_GuestFoodTableAdapter = new MrCy.MrCyDataSet1TableAdapters.tb_GuestFoodTableAdapter();
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.foodnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.foodsumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.foodallpriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.beizhuDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.zhuotaiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.zhangdanIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mrCyDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbGuestFoodBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // textName
@@ -139,20 +148,20 @@
             // 
             this.treeView1.Location = new System.Drawing.Point(25, 82);
             this.treeView1.Name = "treeView1";
-            treeNode29.Name = "guodi";
-            treeNode29.Text = "锅底";
-            treeNode29.ToolTipText = "菜品";
-            treeNode30.Name = "peicai";
-            treeNode30.Text = "配菜";
-            treeNode31.Name = "zhushi";
-            treeNode31.Text = "主食";
-            treeNode32.Name = "yanjiu";
-            treeNode32.Text = "烟酒";
+            treeNode53.Name = "guodi";
+            treeNode53.Text = "锅底";
+            treeNode53.ToolTipText = "菜品";
+            treeNode54.Name = "peicai";
+            treeNode54.Text = "配菜";
+            treeNode55.Name = "zhushi";
+            treeNode55.Text = "主食";
+            treeNode56.Name = "yanjiu";
+            treeNode56.Text = "烟酒";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode29,
-            treeNode30,
-            treeNode31,
-            treeNode32});
+            treeNode53,
+            treeNode54,
+            treeNode55,
+            treeNode56});
             this.treeView1.Size = new System.Drawing.Size(218, 430);
             this.treeView1.TabIndex = 16;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -272,20 +281,6 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // mrCyDataSet
-            // 
-            this.mrCyDataSet.DataSetName = "MrCyDataSet";
-            this.mrCyDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tbGuestFoodBindingSource
-            // 
-            this.tbGuestFoodBindingSource.DataMember = "tb_GuestFood";
-            this.tbGuestFoodBindingSource.DataSource = this.mrCyDataSet;
-            // 
-            // tb_GuestFoodTableAdapter
-            // 
-            this.tb_GuestFoodTableAdapter.ClearBeforeFill = true;
-            // 
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
@@ -310,6 +305,97 @@
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(71, 24);
             this.toolStripStatusLabel2.Text = "default";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.iDDataGridViewTextBoxColumn,
+            this.foodnameDataGridViewTextBoxColumn,
+            this.foodsumDataGridViewTextBoxColumn,
+            this.foodallpriceDataGridViewTextBoxColumn,
+            this.beizhuDataGridViewTextBoxColumn,
+            this.zhuotaiDataGridViewTextBoxColumn,
+            this.zhangdanIDDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.tbGuestFoodBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(294, 327);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 20;
+            this.dataGridView1.RowTemplate.Height = 30;
+            this.dataGridView1.Size = new System.Drawing.Size(527, 170);
+            this.dataGridView1.TabIndex = 34;
+            // 
+            // mrCyDataSet1
+            // 
+            this.mrCyDataSet1.DataSetName = "MrCyDataSet1";
+            this.mrCyDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tbGuestFoodBindingSource
+            // 
+            this.tbGuestFoodBindingSource.DataMember = "tb_GuestFood";
+            this.tbGuestFoodBindingSource.DataSource = this.mrCyDataSet1;
+            // 
+            // tb_GuestFoodTableAdapter
+            // 
+            this.tb_GuestFoodTableAdapter.ClearBeforeFill = true;
+            // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "菜品条目";
+            this.iDDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // foodnameDataGridViewTextBoxColumn
+            // 
+            this.foodnameDataGridViewTextBoxColumn.DataPropertyName = "foodname";
+            this.foodnameDataGridViewTextBoxColumn.HeaderText = "菜名";
+            this.foodnameDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.foodnameDataGridViewTextBoxColumn.Name = "foodnameDataGridViewTextBoxColumn";
+            this.foodnameDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // foodsumDataGridViewTextBoxColumn
+            // 
+            this.foodsumDataGridViewTextBoxColumn.DataPropertyName = "foodsum";
+            this.foodsumDataGridViewTextBoxColumn.HeaderText = "数量";
+            this.foodsumDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.foodsumDataGridViewTextBoxColumn.Name = "foodsumDataGridViewTextBoxColumn";
+            this.foodsumDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // foodallpriceDataGridViewTextBoxColumn
+            // 
+            this.foodallpriceDataGridViewTextBoxColumn.DataPropertyName = "foodallprice";
+            this.foodallpriceDataGridViewTextBoxColumn.HeaderText = "消费总价";
+            this.foodallpriceDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.foodallpriceDataGridViewTextBoxColumn.Name = "foodallpriceDataGridViewTextBoxColumn";
+            this.foodallpriceDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // beizhuDataGridViewTextBoxColumn
+            // 
+            this.beizhuDataGridViewTextBoxColumn.DataPropertyName = "beizhu";
+            this.beizhuDataGridViewTextBoxColumn.HeaderText = "备注";
+            this.beizhuDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.beizhuDataGridViewTextBoxColumn.Name = "beizhuDataGridViewTextBoxColumn";
+            this.beizhuDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // zhuotaiDataGridViewTextBoxColumn
+            // 
+            this.zhuotaiDataGridViewTextBoxColumn.DataPropertyName = "zhuotai";
+            this.zhuotaiDataGridViewTextBoxColumn.HeaderText = "桌台";
+            this.zhuotaiDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.zhuotaiDataGridViewTextBoxColumn.Name = "zhuotaiDataGridViewTextBoxColumn";
+            this.zhuotaiDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // zhangdanIDDataGridViewTextBoxColumn
+            // 
+            this.zhangdanIDDataGridViewTextBoxColumn.DataPropertyName = "zhangdanID";
+            this.zhangdanIDDataGridViewTextBoxColumn.HeaderText = "消费账单编号";
+            this.zhangdanIDDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.zhangdanIDDataGridViewTextBoxColumn.Name = "zhangdanIDDataGridViewTextBoxColumn";
+            this.zhangdanIDDataGridViewTextBoxColumn.Width = 150;
+            // 
             // frmDC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -318,6 +404,7 @@
             this.BackgroundImage = global::MrCy.Properties.Resources.图片2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(833, 540);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label7);
@@ -349,10 +436,11 @@
             this.Text = "点菜";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmDC_FormClosed);
             this.Load += new System.EventHandler(this.frmDC_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.mrCyDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbGuestFoodBindingSource)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mrCyDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbGuestFoodBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -382,11 +470,19 @@
         private System.Windows.Forms.TextBox textWaiterName;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button1;
-        private MrCyDataSet mrCyDataSet;
-        private System.Windows.Forms.BindingSource tbGuestFoodBindingSource;
-        private MrCyDataSetTableAdapters.tb_GuestFoodTableAdapter tb_GuestFoodTableAdapter;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private MrCyDataSet1 mrCyDataSet1;
+        private System.Windows.Forms.BindingSource tbGuestFoodBindingSource;
+        private MrCyDataSet1TableAdapters.tb_GuestFoodTableAdapter tb_GuestFoodTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn foodnameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn foodsumDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn foodallpriceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn beizhuDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn zhuotaiDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn zhangdanIDDataGridViewTextBoxColumn;
     }
 }

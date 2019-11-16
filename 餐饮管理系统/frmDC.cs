@@ -26,9 +26,10 @@ namespace MrCy
 
         private void frmDC_Load(object sender, EventArgs e)
         {
-
-            // TODO: 这行代码将数据加载到表“mrCyDataSet.tb_GuestFood”中。您可以根据需要移动或删除它。
-            this.tb_GuestFoodTableAdapter.Fill(this.mrCyDataSet.tb_GuestFood);
+            // TODO: 这行代码将数据加载到表“mrCyDataSet1.tb_GuestFood”中。您可以根据需要移动或删除它。
+            this.tb_GuestFoodTableAdapter.Fill(this.mrCyDataSet1.tb_GuestFood);
+           
+           
             this.Text = this.Rname + " 点菜";
             con = BaseClass.DBConn.CyCon();
             try
