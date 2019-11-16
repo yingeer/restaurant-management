@@ -58,6 +58,7 @@
             this.c3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.c4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.c5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -132,10 +133,11 @@
             // 
             // treeView1
             // 
-            this.treeView1.Location = new System.Drawing.Point(28, 26);
+            this.treeView1.Location = new System.Drawing.Point(25, 82);
             this.treeView1.Name = "treeView1";
             treeNode1.Name = "guodi";
             treeNode1.Text = "锅底";
+            treeNode1.ToolTipText = "菜品";
             treeNode2.Name = "peicai";
             treeNode2.Text = "配菜";
             treeNode3.Name = "zhushi";
@@ -147,7 +149,7 @@
             treeNode2,
             treeNode3,
             treeNode4});
-            this.treeView1.Size = new System.Drawing.Size(225, 486);
+            this.treeView1.Size = new System.Drawing.Size(218, 430);
             this.treeView1.TabIndex = 16;
             // 
             // dataGridView1
@@ -296,6 +298,16 @@
             this.c5.Name = "c5";
             this.c5.Width = 150;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(48, 48);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(44, 18);
+            this.label10.TabIndex = 29;
+            this.label10.Text = "菜品";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
+            // 
             // frmDC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -303,6 +315,7 @@
             this.BackgroundImage = global::MrCy.Properties.Resources.图片2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(833, 562);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.textBZ);
             this.Controls.Add(this.comboWaiterName);
             this.Controls.Add(this.textAllPrice);
@@ -330,6 +343,7 @@
             this.Name = "frmDC";
             this.ShowIcon = false;
             this.Text = "点菜";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmDC_FormClosed);
             this.Load += new System.EventHandler(this.frmDC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -365,5 +379,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn c3;
         private System.Windows.Forms.DataGridViewTextBoxColumn c4;
         private System.Windows.Forms.DataGridViewTextBoxColumn c5;
+        private System.Windows.Forms.Label label10;
     }
 }

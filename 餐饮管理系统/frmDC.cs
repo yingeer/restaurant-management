@@ -50,6 +50,26 @@ namespace MrCy
                     }
                     sdr.Close();
                 }
+                try
+                {
+                    // 判断桌台状态，空闲则禁用
+                    string sql = "select * from tb_Room where RoomName=N'"+this.Rname+"'";
+                    SqlCommand cmd = new SqlCommand(sql, con);
+                    SqlDataReader sdr = cmd.ExecuteReader();
+                    sdr.Read();
+                    if (sdr["RoomZT"].ToString().Trim() == "空闲")
+                    {
+                        this.buttonSave.Enabled = false;
+                        this.buttonDelete.Enabled = false;
+                        MessageBox.Show("此桌台为空闲状态");
+                    }
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex+"");
+                }
+                
+                treeView1.ExpandAll();
             }
             catch(Exception ex)
             {
@@ -66,6 +86,17 @@ namespace MrCy
 
         private void label7_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmDC_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            con.Close();
 
         }
     }
