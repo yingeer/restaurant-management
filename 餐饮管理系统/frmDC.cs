@@ -91,6 +91,7 @@ namespace MrCy
             string customID = getCurCustomID();
             this.toolStripStatusLabel2.Text = customID;
             this.customID = customID;
+            this.textNum.Text = "1";
 
         }
 
@@ -179,9 +180,7 @@ namespace MrCy
                     }
                     sdr.Close();
                 }
-            // 菜单编号 +1
-            this.addMenuNum();
-                
+            
         }
 
         private void addMenuNum()
@@ -235,7 +234,11 @@ namespace MrCy
             {
                 MessageBox.Show("请不要保存点菜号相同的菜品" + ex);
             }
-            
+
+            // 菜单编号 +1
+            this.addMenuNum();
+            this.textNum.Text = this.menuNum;
+
             // 刷新dataGridView
 
         }
