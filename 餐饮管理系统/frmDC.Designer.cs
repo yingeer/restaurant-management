@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("锅底");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("配菜");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("主食");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("烟酒");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("锅底");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("配菜");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("主食");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("烟酒");
             this.textName = new System.Windows.Forms.TextBox();
             this.textNum = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -42,6 +42,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.c1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.c2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.c3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.c4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.c5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
@@ -51,14 +56,10 @@
             this.label9 = new System.Windows.Forms.Label();
             this.textAllPrice = new System.Windows.Forms.TextBox();
             this.textBZ = new System.Windows.Forms.TextBox();
-            this.c1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.c2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.c3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.c4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.c5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label10 = new System.Windows.Forms.Label();
             this.textWaiterName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -135,20 +136,20 @@
             // 
             this.treeView1.Location = new System.Drawing.Point(25, 82);
             this.treeView1.Name = "treeView1";
-            treeNode13.Name = "guodi";
-            treeNode13.Text = "锅底";
-            treeNode13.ToolTipText = "菜品";
-            treeNode14.Name = "peicai";
-            treeNode14.Text = "配菜";
-            treeNode15.Name = "zhushi";
-            treeNode15.Text = "主食";
-            treeNode16.Name = "yanjiu";
-            treeNode16.Text = "烟酒";
+            treeNode1.Name = "guodi";
+            treeNode1.Text = "锅底";
+            treeNode1.ToolTipText = "菜品";
+            treeNode2.Name = "peicai";
+            treeNode2.Text = "配菜";
+            treeNode3.Name = "zhushi";
+            treeNode3.Text = "主食";
+            treeNode4.Name = "yanjiu";
+            treeNode4.Text = "烟酒";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode13,
-            treeNode14,
-            treeNode15,
-            treeNode16});
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4});
             this.treeView1.Size = new System.Drawing.Size(218, 430);
             this.treeView1.TabIndex = 16;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -170,6 +171,41 @@
             this.dataGridView1.RowTemplate.Height = 30;
             this.dataGridView1.Size = new System.Drawing.Size(518, 204);
             this.dataGridView1.TabIndex = 17;
+            // 
+            // c1
+            // 
+            this.c1.HeaderText = "菜名";
+            this.c1.MinimumWidth = 8;
+            this.c1.Name = "c1";
+            this.c1.Width = 150;
+            // 
+            // c2
+            // 
+            this.c2.HeaderText = "数量";
+            this.c2.MinimumWidth = 8;
+            this.c2.Name = "c2";
+            this.c2.Width = 150;
+            // 
+            // c3
+            // 
+            this.c3.HeaderText = "总价";
+            this.c3.MinimumWidth = 8;
+            this.c3.Name = "c3";
+            this.c3.Width = 150;
+            // 
+            // c4
+            // 
+            this.c4.HeaderText = "服务员";
+            this.c4.MinimumWidth = 8;
+            this.c4.Name = "c4";
+            this.c4.Width = 150;
+            // 
+            // c5
+            // 
+            this.c5.HeaderText = "备注";
+            this.c5.MinimumWidth = 8;
+            this.c5.Name = "c5";
+            this.c5.Width = 150;
             // 
             // buttonSave
             // 
@@ -220,15 +256,15 @@
             // 
             // textNumber
             // 
-            this.textNumber.Location = new System.Drawing.Point(562, 118);
+            this.textNumber.Location = new System.Drawing.Point(561, 118);
             this.textNumber.Name = "textNumber";
-            this.textNumber.Size = new System.Drawing.Size(58, 28);
+            this.textNumber.Size = new System.Drawing.Size(47, 28);
             this.textNumber.TabIndex = 24;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(665, 121);
+            this.label9.Location = new System.Drawing.Point(636, 121);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(62, 18);
             this.label9.TabIndex = 25;
@@ -236,9 +272,9 @@
             // 
             // textAllPrice
             // 
-            this.textAllPrice.Location = new System.Drawing.Point(722, 118);
+            this.textAllPrice.Location = new System.Drawing.Point(684, 118);
             this.textAllPrice.Name = "textAllPrice";
-            this.textAllPrice.Size = new System.Drawing.Size(85, 28);
+            this.textAllPrice.Size = new System.Drawing.Size(58, 28);
             this.textAllPrice.TabIndex = 26;
             // 
             // textBZ
@@ -247,41 +283,6 @@
             this.textBZ.Name = "textBZ";
             this.textBZ.Size = new System.Drawing.Size(169, 28);
             this.textBZ.TabIndex = 28;
-            // 
-            // c1
-            // 
-            this.c1.HeaderText = "菜名";
-            this.c1.MinimumWidth = 8;
-            this.c1.Name = "c1";
-            this.c1.Width = 150;
-            // 
-            // c2
-            // 
-            this.c2.HeaderText = "数量";
-            this.c2.MinimumWidth = 8;
-            this.c2.Name = "c2";
-            this.c2.Width = 150;
-            // 
-            // c3
-            // 
-            this.c3.HeaderText = "总价";
-            this.c3.MinimumWidth = 8;
-            this.c3.Name = "c3";
-            this.c3.Width = 150;
-            // 
-            // c4
-            // 
-            this.c4.HeaderText = "服务员";
-            this.c4.MinimumWidth = 8;
-            this.c4.Name = "c4";
-            this.c4.Width = 150;
-            // 
-            // c5
-            // 
-            this.c5.HeaderText = "备注";
-            this.c5.MinimumWidth = 8;
-            this.c5.Name = "c5";
-            this.c5.Width = 150;
             // 
             // label10
             // 
@@ -303,19 +304,32 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(635, 121);
+            this.label7.Location = new System.Drawing.Point(617, 121);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(17, 18);
             this.label7.TabIndex = 31;
             this.label7.Text = "=";
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.button1.Location = new System.Drawing.Point(748, 118);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(59, 28);
+            this.button1.TabIndex = 32;
+            this.button1.Text = "计算";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmDC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.BackgroundImage = global::MrCy.Properties.Resources.图片2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(833, 562);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textWaiterName);
             this.Controls.Add(this.label10);
@@ -381,5 +395,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textWaiterName;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button1;
     }
 }

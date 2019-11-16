@@ -17,6 +17,7 @@ namespace MrCy
         public string Rname="大厅-01";
         private string waiterName = "";
         private SqlConnection con;
+        private int curPrice = 1;
         public frmDC()
         {
             InitializeComponent();
@@ -117,6 +118,7 @@ namespace MrCy
             catch(Exception)
             {
             }
+
             string[] foodType = { "锅底", "主食", "配菜", "烟酒" };
             if (foodType.Contains(foodName))
             {
@@ -127,17 +129,22 @@ namespace MrCy
                 string sql = "select * from tb_Food where FoodName=N'"+foodName+"'";
                 SqlCommand cmd = new SqlCommand(sql, con);
                 SqlDataReader sdr =  cmd.ExecuteReader();
-                while (sdr.Read())
-                {
-                    // 将信息显示到右侧表单
-                    string price = sdr["FoodPrice"].ToString().Trim();
-                    this.textPrice.Text = price; // 该food单个价格
-                    this.textName.Text = foodName; 
-                    this.textWaiterName.Text = this.waiterName;
-                    // 该商品此次消费总价
-                    /*this.textAllPrice.Text = (Convert.ToInt32(price) * Convert.ToInt32(this.textNumber.Text)).ToString().Trim();*/
+                
+                    while (sdr.Read())
+                    {
+
+                        // 将信息显示到右侧表单
+                        string price = sdr["FoodPrice"].ToString().Trim();
+                        this.textPrice.Text = price; // 该food单个价格
+                                                     /*this.curPrice = int.Parse(price); */// price传给curPrice
+                        this.textName.Text = foodName;
+                        this.textWaiterName.Text = this.waiterName;
+                        this.textNumber.Text = "1";
+                   
                 }
                 sdr.Close();
+
+
             }
             // 消费菜单编号
             string customID = "1";
@@ -148,7 +155,7 @@ namespace MrCy
                 SqlDataReader sdr = cmd.ExecuteReader();
                 sdr.Read();
                 customID = (int.Parse(sdr["total"].ToString().Trim())+1).ToString();
-
+                sdr.Close();
             }
             catch(Exception)
             {
@@ -157,6 +164,7 @@ namespace MrCy
             finally
             {
                 this.textNum.Text = customID;
+                
             }
 
         }
@@ -171,9 +179,14 @@ namespace MrCy
             }
         }
 
-        private void buttonCompute_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-
+            // 该商品此次消费总价
+            this.textAllPrice.Text = (this.curPrice * int.Parse(this.textNumber.Text)).ToString();
         }
     }
 }
+/*
+                   
+                    
+*/
