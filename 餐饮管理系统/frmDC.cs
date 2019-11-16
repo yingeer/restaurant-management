@@ -98,7 +98,6 @@ namespace MrCy
         private void frmDC_FormClosed(object sender, FormClosedEventArgs e)
         {
             con.Close();
-
         }
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
@@ -117,7 +116,6 @@ namespace MrCy
             }
             catch(Exception)
             {
-
             }
             string[] foodType = { "锅底", "主食", "配菜", "烟酒" };
             if (foodType.Contains(foodName))
@@ -133,11 +131,11 @@ namespace MrCy
                 {
                     // 将信息显示到右侧表单
                     string price = sdr["FoodPrice"].ToString().Trim();
-                    this.textPrice.Text = price;
-                    this.textName.Text = foodName;
+                    this.textPrice.Text = price; // 该food单个价格
+                    this.textName.Text = foodName; 
                     this.textWaiterName.Text = this.waiterName;
+                    // 该商品此次消费总价
                     /*this.textAllPrice.Text = (Convert.ToInt32(price) * Convert.ToInt32(this.textNumber.Text)).ToString().Trim();*/
-
                 }
                 sdr.Close();
             }
@@ -145,11 +143,11 @@ namespace MrCy
             string customID = "1";
             try
             {
-                string sql = "select ID from tb_GuestFood where zhuotai=N'"+Rname+"'";
+                string sql = "select count(ID) as total from tb_GuestFood";
                 SqlCommand cmd = new SqlCommand(sql, con);
                 SqlDataReader sdr = cmd.ExecuteReader();
                 sdr.Read();
-                customID = sdr["ID"].ToString().Trim();
+                customID = (int.Parse(sdr["total"].ToString().Trim())+1).ToString();
 
             }
             catch(Exception)
@@ -170,8 +168,12 @@ namespace MrCy
             {
                 con.Close();
                 this.Close();
-
             }
+        }
+
+        private void buttonCompute_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

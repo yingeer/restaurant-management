@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("锅底");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("配菜");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("主食");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("烟酒");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("锅底");
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("配菜");
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("主食");
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("烟酒");
             this.textName = new System.Windows.Forms.TextBox();
             this.textNum = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -45,7 +45,6 @@
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
             this.textPrice = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.textNumber = new System.Windows.Forms.TextBox();
@@ -59,6 +58,7 @@
             this.c5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label10 = new System.Windows.Forms.Label();
             this.textWaiterName = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -135,20 +135,20 @@
             // 
             this.treeView1.Location = new System.Drawing.Point(25, 82);
             this.treeView1.Name = "treeView1";
-            treeNode5.Name = "guodi";
-            treeNode5.Text = "锅底";
-            treeNode5.ToolTipText = "菜品";
-            treeNode6.Name = "peicai";
-            treeNode6.Text = "配菜";
-            treeNode7.Name = "zhushi";
-            treeNode7.Text = "主食";
-            treeNode8.Name = "yanjiu";
-            treeNode8.Text = "烟酒";
+            treeNode13.Name = "guodi";
+            treeNode13.Text = "锅底";
+            treeNode13.ToolTipText = "菜品";
+            treeNode14.Name = "peicai";
+            treeNode14.Text = "配菜";
+            treeNode15.Name = "zhushi";
+            treeNode15.Text = "主食";
+            treeNode16.Name = "yanjiu";
+            treeNode16.Text = "烟酒";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode5,
-            treeNode6,
-            treeNode7,
-            treeNode8});
+            treeNode13,
+            treeNode14,
+            treeNode15,
+            treeNode16});
             this.treeView1.Size = new System.Drawing.Size(218, 430);
             this.treeView1.TabIndex = 16;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -202,16 +202,6 @@
             this.buttonExit.UseVisualStyleBackColor = false;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(626, 121);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(17, 18);
-            this.label7.TabIndex = 21;
-            this.label7.Text = "=";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
-            // 
             // textPrice
             // 
             this.textPrice.Location = new System.Drawing.Point(432, 118);
@@ -238,7 +228,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(649, 121);
+            this.label9.Location = new System.Drawing.Point(665, 121);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(62, 18);
             this.label9.TabIndex = 25;
@@ -246,9 +236,9 @@
             // 
             // textAllPrice
             // 
-            this.textAllPrice.Location = new System.Drawing.Point(704, 118);
+            this.textAllPrice.Location = new System.Drawing.Point(722, 118);
             this.textAllPrice.Name = "textAllPrice";
-            this.textAllPrice.Size = new System.Drawing.Size(103, 28);
+            this.textAllPrice.Size = new System.Drawing.Size(85, 28);
             this.textAllPrice.TabIndex = 26;
             // 
             // textBZ
@@ -310,6 +300,15 @@
             this.textWaiterName.Size = new System.Drawing.Size(82, 28);
             this.textWaiterName.TabIndex = 30;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(635, 121);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(17, 18);
+            this.label7.TabIndex = 31;
+            this.label7.Text = "=";
+            // 
             // frmDC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -317,6 +316,7 @@
             this.BackgroundImage = global::MrCy.Properties.Resources.图片2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(833, 562);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.textWaiterName);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.textBZ);
@@ -325,7 +325,6 @@
             this.Controls.Add(this.textNumber);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.textPrice);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonSave);
@@ -368,7 +367,6 @@
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonExit;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textPrice;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textNumber;
@@ -382,5 +380,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn c5;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textWaiterName;
+        private System.Windows.Forms.Label label7;
     }
 }
