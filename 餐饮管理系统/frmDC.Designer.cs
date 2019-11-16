@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("锅底");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("配菜");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("主食");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("烟酒");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("锅底");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("配菜");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("主食");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("烟酒");
             this.textName = new System.Windows.Forms.TextBox();
             this.textNum = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -69,10 +69,14 @@
             this.beizhuDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.zhuotaiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.zhangdanIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.添加ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.查看ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mrCyDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbGuestFoodBindingSource)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textName
@@ -88,6 +92,7 @@
             this.textNum.Name = "textNum";
             this.textNum.Size = new System.Drawing.Size(58, 28);
             this.textNum.TabIndex = 14;
+            this.textNum.Text = "1";
             // 
             // label6
             // 
@@ -146,22 +151,23 @@
             // 
             // treeView1
             // 
+            this.treeView1.ContextMenuStrip = this.contextMenuStrip1;
             this.treeView1.Location = new System.Drawing.Point(25, 82);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "guodi";
-            treeNode1.Text = "锅底";
-            treeNode1.ToolTipText = "菜品";
-            treeNode2.Name = "peicai";
-            treeNode2.Text = "配菜";
-            treeNode3.Name = "zhushi";
-            treeNode3.Text = "主食";
-            treeNode4.Name = "yanjiu";
-            treeNode4.Text = "烟酒";
+            treeNode5.Name = "guodi";
+            treeNode5.Text = "锅底";
+            treeNode5.ToolTipText = "菜品";
+            treeNode6.Name = "peicai";
+            treeNode6.Text = "配菜";
+            treeNode7.Name = "zhushi";
+            treeNode7.Text = "主食";
+            treeNode8.Name = "yanjiu";
+            treeNode8.Text = "烟酒";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode4});
+            treeNode5,
+            treeNode6,
+            treeNode7,
+            treeNode8});
             this.treeView1.Size = new System.Drawing.Size(218, 430);
             this.treeView1.TabIndex = 16;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -399,6 +405,30 @@
             this.zhangdanIDDataGridViewTextBoxColumn.Name = "zhangdanIDDataGridViewTextBoxColumn";
             this.zhangdanIDDataGridViewTextBoxColumn.Width = 150;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.添加ToolStripMenuItem,
+            this.查看ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(117, 64);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            // 
+            // 添加ToolStripMenuItem
+            // 
+            this.添加ToolStripMenuItem.Name = "添加ToolStripMenuItem";
+            this.添加ToolStripMenuItem.Size = new System.Drawing.Size(240, 30);
+            this.添加ToolStripMenuItem.Text = "添加";
+            this.添加ToolStripMenuItem.Click += new System.EventHandler(this.添加ToolStripMenuItem_Click);
+            // 
+            // 查看ToolStripMenuItem
+            // 
+            this.查看ToolStripMenuItem.Name = "查看ToolStripMenuItem";
+            this.查看ToolStripMenuItem.Size = new System.Drawing.Size(240, 30);
+            this.查看ToolStripMenuItem.Text = "查看";
+            this.查看ToolStripMenuItem.Click += new System.EventHandler(this.查看ToolStripMenuItem_Click);
+            // 
             // frmDC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -444,6 +474,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mrCyDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbGuestFoodBindingSource)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -487,5 +518,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn beizhuDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn zhuotaiDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn zhangdanIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 添加ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 查看ToolStripMenuItem;
     }
 }

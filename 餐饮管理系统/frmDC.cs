@@ -19,7 +19,7 @@ namespace MrCy
         private SqlConnection con;
         private string curPrice = "";
         private string customID = "1";
-        
+        private string menuNum = "0";
 
         public frmDC()
         {
@@ -142,7 +142,7 @@ namespace MrCy
 
         private void treeView1_DoubleClick(object sender, EventArgs e)
         {
-
+            
             string foodName = "";
             // 在treeView中选择一项, 防止乱双击
             try
@@ -175,11 +175,18 @@ namespace MrCy
                         this.textName.Text = foodName;
                         this.textWaiterName.Text = this.waiterName;
                         this.textNumber.Text = "1";
-
+                        this.textAllPrice.Text = "0"; // 每次双击清零
                     }
                     sdr.Close();
                 }
+            // 菜单编号 +1
+            this.addMenuNum();
                 
+        }
+
+        private void addMenuNum()
+        {
+            this.menuNum = (int.Parse(this.menuNum) + 1).ToString();
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
@@ -269,30 +276,76 @@ namespace MrCy
 
         private void treeView1_Click(object sender, EventArgs e)
         {
-            // 单击查看菜品
-            string foodName = "";
-            try
-            {
-                foodName = treeView1.SelectedNode.Text.ToString().Trim();
-            }
-            catch (Exception)
-            {
-                
-            }
-            // 查找数据
-            SqlDataReader sdr = queryFoodInThisCustom(foodName);
-            // 展现数据
-            this.textAllPrice.Text = sdr["foodallprice"].ToString().Trim();
-            sdr.Close();
+            
         }
 
         private SqlDataReader queryFoodInThisCustom(string foodName)
         {
-            string sql = "select * from tb_GuestFood where foodname=N'"+foodName+"' and "+ "zhangdanID="+int.Parse(this.customID);
-            SqlCommand cmd = new SqlCommand(sql, con);
-            SqlDataReader sdr = cmd.ExecuteReader();
-            sdr.Read();
-            return sdr;
+                string sql = "select * from tb_GuestFood where foodname=N'" + foodName + "' and " + "zhangdanID=" + int.Parse(this.customID);
+                SqlCommand cmd = new SqlCommand(sql, con);
+                SqlDataReader sdr = cmd.ExecuteReader();
+                sdr.Read();
+                return sdr;
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void 添加ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (treeView1.SelectedNode.Nodes.Count == 0)
+                {
+                    this.treeView1_DoubleClick(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show("请选择菜品");
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void 查看ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string foodName = "";
+           
+            if (treeView1.SelectedNode.Nodes.Count == 0)
+            {
+                    foodName = treeView1.SelectedNode.Text.ToString().Trim();
+
+                try
+                {
+                    SqlDataReader sdr = queryFoodInThisCustom(foodName);
+                    // 展现数据
+                    this.textAllPrice.Text = sdr["foodallprice"].ToString().Trim();
+                    this.textBZ.Text = sdr["beizhu"].ToString().Trim();
+                    this.textNumber.Text = sdr["foodsum"].ToString().Trim();
+                    this.textName.Text = sdr["foodname"].ToString().Trim();
+                    this.textWaiterName.Text = sdr["waitername"].ToString().Trim();
+
+                    sdr.Close();
+                }
+                catch(Exception ex)
+                {
+
+                    MessageBox.Show("该菜品没有下单"+ ex);
+
+                }
+
+            }
+            else
+            {
+                    MessageBox.Show("请选择菜品");
+            }
+            
+
         }
     }
 }
