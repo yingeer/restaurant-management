@@ -28,8 +28,7 @@ namespace MrCy
 
         private void frmDC_Load(object sender, EventArgs e)
         {
-            // TODO: 这行代码将数据加载到表“mrCyDataSet1.tb_GuestFood”中。您可以根据需要移动或删除它。
-            this.tb_GuestFoodTableAdapter.Fill(this.mrCyDataSet1.tb_GuestFood);
+            
            
            
             this.Text = this.Rname + " 点菜";
@@ -240,7 +239,7 @@ namespace MrCy
             this.textNum.Text = this.menuNum;
 
             // 刷新dataGridView
-
+            this.getData();
         }
 
         private int getIDOfMenu()
@@ -268,13 +267,22 @@ namespace MrCy
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            string sql = "";
-            SqlCommand cmd = new SqlCommand(sql, con);
-            int rows = cmd.ExecuteNonQuery();
-            if (rows <= 0)
+            if (dataGridView1.SelectedRows.Count > 0)
             {
-                MessageBox.Show("删除数据失败");
+                string foodName = dataGridView1.SelectedCells[0].Value.ToString();
+                string sql = "delete from tb_GuestFood where foodname=N'"+foodName+"' and zhangdanID="+int.Parse(this.customID) ;
+                SqlCommand cmd = new SqlCommand(sql, con);
+                int rows = cmd.ExecuteNonQuery();
+                if (rows <= 0)
+                {
+                    MessageBox.Show("删除数据失败");
+                }
             }
+            else
+            {
+                MessageBox.Show("请选择消费的菜品");
+            }
+            getData();
         }
 
         private void treeView1_Click(object sender, EventArgs e)
@@ -349,6 +357,15 @@ namespace MrCy
             }
             
 
+        }
+
+        private void getData()
+        {
+            string sql = "select foodname, foodsum, foodallprice, beizhu, zhuotai, zhangdanID from tb_GuestFood where zhangdanID="+int.Parse(this.customID);
+            SqlDataAdapter sda = new SqlDataAdapter(sql, con);
+            DataSet ds = new DataSet();
+            sda.Fill(ds);
+            dataGridView1.DataSource = ds.Tables[0];
         }
     }
 }

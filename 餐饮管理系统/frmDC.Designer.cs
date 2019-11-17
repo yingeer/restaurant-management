@@ -59,23 +59,11 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.mrCyDataSet1 = new MrCy.MrCyDataSet1();
-            this.tbGuestFoodBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tb_GuestFoodTableAdapter = new MrCy.MrCyDataSet1TableAdapters.tb_GuestFoodTableAdapter();
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.foodnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.foodsumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.foodallpriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.beizhuDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.zhuotaiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.zhangdanIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.添加ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查看ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mrCyDataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbGuestFoodBindingSource)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -315,94 +303,14 @@
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.iDDataGridViewTextBoxColumn,
-            this.foodnameDataGridViewTextBoxColumn,
-            this.foodsumDataGridViewTextBoxColumn,
-            this.foodallpriceDataGridViewTextBoxColumn,
-            this.beizhuDataGridViewTextBoxColumn,
-            this.zhuotaiDataGridViewTextBoxColumn,
-            this.zhangdanIDDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.tbGuestFoodBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(294, 327);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 20;
             this.dataGridView1.RowTemplate.Height = 30;
             this.dataGridView1.Size = new System.Drawing.Size(527, 170);
             this.dataGridView1.TabIndex = 34;
-            // 
-            // mrCyDataSet1
-            // 
-            this.mrCyDataSet1.DataSetName = "MrCyDataSet1";
-            this.mrCyDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tbGuestFoodBindingSource
-            // 
-            this.tbGuestFoodBindingSource.DataMember = "tb_GuestFood";
-            this.tbGuestFoodBindingSource.DataSource = this.mrCyDataSet1;
-            // 
-            // tb_GuestFoodTableAdapter
-            // 
-            this.tb_GuestFoodTableAdapter.ClearBeforeFill = true;
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn.HeaderText = "菜品条目";
-            this.iDDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            this.iDDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // foodnameDataGridViewTextBoxColumn
-            // 
-            this.foodnameDataGridViewTextBoxColumn.DataPropertyName = "foodname";
-            this.foodnameDataGridViewTextBoxColumn.HeaderText = "菜名";
-            this.foodnameDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.foodnameDataGridViewTextBoxColumn.Name = "foodnameDataGridViewTextBoxColumn";
-            this.foodnameDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // foodsumDataGridViewTextBoxColumn
-            // 
-            this.foodsumDataGridViewTextBoxColumn.DataPropertyName = "foodsum";
-            this.foodsumDataGridViewTextBoxColumn.HeaderText = "数量";
-            this.foodsumDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.foodsumDataGridViewTextBoxColumn.Name = "foodsumDataGridViewTextBoxColumn";
-            this.foodsumDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // foodallpriceDataGridViewTextBoxColumn
-            // 
-            this.foodallpriceDataGridViewTextBoxColumn.DataPropertyName = "foodallprice";
-            this.foodallpriceDataGridViewTextBoxColumn.HeaderText = "消费总价";
-            this.foodallpriceDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.foodallpriceDataGridViewTextBoxColumn.Name = "foodallpriceDataGridViewTextBoxColumn";
-            this.foodallpriceDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // beizhuDataGridViewTextBoxColumn
-            // 
-            this.beizhuDataGridViewTextBoxColumn.DataPropertyName = "beizhu";
-            this.beizhuDataGridViewTextBoxColumn.HeaderText = "备注";
-            this.beizhuDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.beizhuDataGridViewTextBoxColumn.Name = "beizhuDataGridViewTextBoxColumn";
-            this.beizhuDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // zhuotaiDataGridViewTextBoxColumn
-            // 
-            this.zhuotaiDataGridViewTextBoxColumn.DataPropertyName = "zhuotai";
-            this.zhuotaiDataGridViewTextBoxColumn.HeaderText = "桌台";
-            this.zhuotaiDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.zhuotaiDataGridViewTextBoxColumn.Name = "zhuotaiDataGridViewTextBoxColumn";
-            this.zhuotaiDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // zhangdanIDDataGridViewTextBoxColumn
-            // 
-            this.zhangdanIDDataGridViewTextBoxColumn.DataPropertyName = "zhangdanID";
-            this.zhangdanIDDataGridViewTextBoxColumn.HeaderText = "消费账单编号";
-            this.zhangdanIDDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.zhangdanIDDataGridViewTextBoxColumn.Name = "zhangdanIDDataGridViewTextBoxColumn";
-            this.zhangdanIDDataGridViewTextBoxColumn.Width = 150;
             // 
             // contextMenuStrip1
             // 
@@ -471,8 +379,6 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mrCyDataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbGuestFoodBindingSource)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -507,16 +413,6 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private MrCyDataSet1 mrCyDataSet1;
-        private System.Windows.Forms.BindingSource tbGuestFoodBindingSource;
-        private MrCyDataSet1TableAdapters.tb_GuestFoodTableAdapter tb_GuestFoodTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn foodnameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn foodsumDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn foodallpriceDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn beizhuDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn zhuotaiDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn zhangdanIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 添加ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 查看ToolStripMenuItem;
