@@ -17,7 +17,7 @@ namespace Start
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmDC());
+            Application.Run(new frmJZ());
         }
     }
 }

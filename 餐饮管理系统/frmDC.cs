@@ -28,9 +28,6 @@ namespace MrCy
 
         private void frmDC_Load(object sender, EventArgs e)
         {
-            
-           
-           
             this.Text = this.Rname + " 点菜";
             con = BaseClass.DBConn.CyCon();
             try

@@ -299,6 +299,7 @@
             this.结账ToolStripMenuItem.Name = "结账ToolStripMenuItem";
             this.结账ToolStripMenuItem.Size = new System.Drawing.Size(240, 30);
             this.结账ToolStripMenuItem.Text = "结账";
+            this.结账ToolStripMenuItem.Click += new System.EventHandler(this.结账ToolStripMenuItem_Click);
             // 
             // listView1
             // 
