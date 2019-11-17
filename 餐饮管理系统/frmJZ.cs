@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Collections;
 
 namespace MrCy
 {
@@ -15,30 +16,88 @@ namespace MrCy
     {
         public string Rname="大厅-01";
         public SqlConnection con;
+        public float sum = 0;
         /*  功能分析
          *  根据Rname 最大zhangdanID做查询，查出消费记录
          *  左侧显示消费记录dataGridView    右侧显示总消费,收银，找零，微信，支付宝
-         
-             
              */
         public frmJZ()
         {
             InitializeComponent();
         }
-
         
         private void frmJZ_Load(object sender, EventArgs e)
         {
             // 连接数据库
             con = BaseClass.DBConn.CyCon();
-            //显示左侧消费记录，计算消费总额
+            con.Open();
+            //显示左侧消费记录
+            string customID = "";
+            string sql = "select max(zhangdanID) as customID from tb_GuestFood where zhuotai='"+Rname+"'";
+            try
+            {
+                SqlDataReader sdr = getReader(sql);
+                sdr.Read();
+                customID = sdr["customID"].ToString().Trim();
+                sdr.Close();
+            }
+            catch
+            {
+                MessageBox.Show("该桌台此次账单号查询失败");
+            }
+            sql = "select foodname, foodsum, foodallprice, waitername, zhuotai from tb_GuestFood where zhangdanID="+int.Parse(customID);
+            getDataToGridView(sql);
 
+            // 计算消费总额
+            ArrayList priceList = new ArrayList();//实例化集合
+            try
+            {
+                SqlDataReader sdr = getReader(sql);
+                while (sdr.Read())
+                {
+                    float p = float.Parse(sdr["foodallprice"].ToString().Trim());
+                    priceList.Add(p);
+                }
+                sdr.Close();
+                float sum=0;
+                foreach (float each in priceList)
+                {
+                    sum += each;
+                }
+                this.labelconsume.Text = sum.ToString().Trim();
+                this.sum = sum;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("消费总额查询失败"+ ex);
+            }
+         
+        }
 
+        private void getDataToGridView(string sql)
+        {
+            SqlDataAdapter sda = new SqlDataAdapter(sql, con);
+            DataSet ds = new DataSet();
+            sda.Fill(ds);
+            dataGridView1.DataSource = ds.Tables[0];
+        }
+
+        private SqlDataReader getReader(string sql)
+        {
+            SqlCommand cmd = new SqlCommand(sql, con);
+            SqlDataReader sdr = cmd.ExecuteReader();
+            return sdr;
         }
 
         private void buttonJZ_Click(object sender, EventArgs e)
         {
             // 输入收银，找零
+            if (labelRest.Text == "")
+            {
+                MessageBox.Show("请输入收款金额");
+            }
+            float money = float.Parse(textBox1.Text.Trim());
+            labelRest.Text = (money - this.sum).ToString().Trim();
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
@@ -61,6 +120,11 @@ namespace MrCy
         {
             PayWay.ZhiFuBaoPay pay = new PayWay.ZhiFuBaoPay();
             pay.ShowDialog();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
