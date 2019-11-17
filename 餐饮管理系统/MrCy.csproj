@@ -145,6 +145,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MrCyDataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="PayWay\WeiXinPay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PayWay\WeiXinPay.Designer.cs">
+      <DependentUpon>WeiXinPay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PayWay\ZhiFuBaoPay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PayWay\ZhiFuBaoPay.Designer.cs">
+      <DependentUpon>ZhiFuBaoPay.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmBF.resx">
@@ -182,6 +194,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSearch.resx">
       <DependentUpon>frmSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PayWay\WeiXinPay.resx">
+      <DependentUpon>WeiXinPay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PayWay\ZhiFuBaoPay.resx">
+      <DependentUpon>ZhiFuBaoPay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -231,10 +249,21 @@
   <ItemGroup>
     <Folder Include="DataBase\" />
     <Folder Include="Data\" />
-    <Folder Include="Image\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\图片2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\微信.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\微信二维码.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\支付宝.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\支付宝二维码.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
