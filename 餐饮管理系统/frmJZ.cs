@@ -96,8 +96,21 @@ namespace MrCy
             {
                 MessageBox.Show("请输入收款金额");
             }
-            float money = float.Parse(textBox1.Text.Trim());
-            labelRest.Text = (money - this.sum).ToString().Trim();
+
+            /*else if (float.Parse(labelRest.Text.ToString().Trim()) - this.sum < 0)
+            {
+                MessageBox.Show("收款金额小于消费金额");
+            }*/
+            try
+            {
+                float money = float.Parse(textBox1.Text.Trim());
+                labelRest.Text = (money - this.sum).ToString().Trim();
+            }
+            catch(Exception)
+            {
+
+            }
+            
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
@@ -125,6 +138,16 @@ namespace MrCy
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar != 8 && !char.IsDigit(e.KeyChar)) && e.KeyChar != 13)
+            {
+                this.textBox1.Text = "";
+                MessageBox.Show("请输入数字");
+                
+            }
         }
     }
 }
