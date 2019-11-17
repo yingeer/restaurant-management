@@ -14,8 +14,10 @@ namespace MrCy
 {
     public partial class frmLogin : Form
     {
-    
-        
+        // 传给Main
+        public string now = ""; 
+        public string userName = "";
+        public string power = "";
         public frmLogin()
         {
             InitializeComponent();
@@ -51,8 +53,19 @@ namespace MrCy
                             SqlDataReader sdr = cmd.ExecuteReader();
                             while (sdr.Read())
                             {
-                                MessageBox.Show("欢迎" + sdr["UserName"]);
+                                string userName = sdr["UserName"].ToString().Trim();
+                                string userPwd = sdr["UserPwd"].ToString().Trim();
+                                // 判断是否存在该用户
+                                if (userName == this.textName.Text.Trim() && userPwd == this.textPwd.Text.Trim())
+                                {
+                                    this.userName = userName;
+                                    this.power = sdr["power"].ToString().Trim();
+                                    this.now = DateTime.Now.ToString();
+                                    // 进入Main窗口
+                                    this.getInMain();
+                                }
                             }
+                            sdr.Close();
                         }
                     }
 
@@ -63,6 +76,18 @@ namespace MrCy
                 }
             }
 
+        }
+
+        private void getInMain()
+        {
+            // 进入Main窗口
+            frmMain main = new frmMain();
+            main.Times = this.now;
+            main.Names = this.userName;
+            main.power = this.power;
+            MessageBox.Show("欢迎 " + this.userName);
+            main.ShowDialog();
+            this.Hide();
         }
 
         private void frmLogin_Load(object sender, EventArgs e)

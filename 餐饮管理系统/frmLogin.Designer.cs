@@ -48,7 +48,9 @@
             // textPwd
             // 
             this.textPwd.Location = new System.Drawing.Point(348, 284);
+            this.textPwd.MaxLength = 30;
             this.textPwd.Name = "textPwd";
+            this.textPwd.PasswordChar = '*';
             this.textPwd.Size = new System.Drawing.Size(236, 28);
             this.textPwd.TabIndex = 1;
             this.textPwd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textPwd_KeyPress);
@@ -121,7 +123,10 @@
             this.Controls.Add(this.textPwd);
             this.Controls.Add(this.textName);
             this.DoubleBuffered = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmLogin";
+            this.ShowIcon = false;
             this.Text = "登录";
             this.Load += new System.EventHandler(this.frmLogin_Load);
             this.ResumeLayout(false);

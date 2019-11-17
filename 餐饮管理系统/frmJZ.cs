@@ -149,5 +149,10 @@ namespace MrCy
                 
             }
         }
+
+        private void frmJZ_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            con.Close();
+        }
     }
 }

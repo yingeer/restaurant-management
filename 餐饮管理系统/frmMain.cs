@@ -13,6 +13,7 @@ namespace MrCy
     public partial class frmMain : Form
     {
         public SqlDataReader sdr;
+        // 从login接收
         public string power = "0"; // 登录用户权限
         public string Names;
         public string Times;
