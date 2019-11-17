@@ -86,8 +86,9 @@ namespace MrCy
             main.Names = this.userName;
             main.power = this.power;
             MessageBox.Show("欢迎 " + this.userName);
-            main.ShowDialog();
             this.Hide();
+            main.ShowDialog();
+            
         }
 
         private void frmLogin_Load(object sender, EventArgs e)
