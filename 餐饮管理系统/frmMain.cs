@@ -310,5 +310,11 @@ namespace MrCy
                 MessageBox.Show("请选择桌台");
             }
         }
+
+        private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+
+        }
     }
 }

@@ -45,8 +45,16 @@ namespace MrCy
             {
                 MessageBox.Show("该桌台此次账单号查询失败");
             }
-            sql = "select foodname, foodsum, foodallprice, waitername, zhuotai from tb_GuestFood where zhangdanID="+int.Parse(customID);
-            getDataToGridView(sql);
+            try
+            {
+                sql = "select foodname, foodsum, foodallprice, waitername, zhuotai from tb_GuestFood where zhangdanID=" + int.Parse(customID);
+                getDataToGridView(sql);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("未消费");
+            }
+            
 
             // 计算消费总额
             ArrayList priceList = new ArrayList();//实例化集合
@@ -146,7 +154,6 @@ namespace MrCy
             {
                 this.textBox1.Text = "";
                 MessageBox.Show("请输入数字");
-                
             }
         }
 

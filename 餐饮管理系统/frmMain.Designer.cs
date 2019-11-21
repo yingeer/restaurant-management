@@ -264,40 +264,40 @@
             this.消费查询ToolStripMenuItem,
             this.结账ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(241, 187);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 154);
             // 
             // 开台ToolStripMenuItem
             // 
             this.开台ToolStripMenuItem.Name = "开台ToolStripMenuItem";
-            this.开台ToolStripMenuItem.Size = new System.Drawing.Size(240, 30);
+            this.开台ToolStripMenuItem.Size = new System.Drawing.Size(152, 30);
             this.开台ToolStripMenuItem.Text = "开台";
             this.开台ToolStripMenuItem.Click += new System.EventHandler(this.开台ToolStripMenuItem_Click);
             // 
             // 取消开台ToolStripMenuItem
             // 
             this.取消开台ToolStripMenuItem.Name = "取消开台ToolStripMenuItem";
-            this.取消开台ToolStripMenuItem.Size = new System.Drawing.Size(240, 30);
+            this.取消开台ToolStripMenuItem.Size = new System.Drawing.Size(152, 30);
             this.取消开台ToolStripMenuItem.Text = "取消开台";
             this.取消开台ToolStripMenuItem.Click += new System.EventHandler(this.取消开台ToolStripMenuItem_Click);
             // 
             // 点加菜ToolStripMenuItem
             // 
             this.点加菜ToolStripMenuItem.Name = "点加菜ToolStripMenuItem";
-            this.点加菜ToolStripMenuItem.Size = new System.Drawing.Size(240, 30);
+            this.点加菜ToolStripMenuItem.Size = new System.Drawing.Size(152, 30);
             this.点加菜ToolStripMenuItem.Text = "点|加菜";
             this.点加菜ToolStripMenuItem.Click += new System.EventHandler(this.点加菜ToolStripMenuItem_Click);
             // 
             // 消费查询ToolStripMenuItem
             // 
             this.消费查询ToolStripMenuItem.Name = "消费查询ToolStripMenuItem";
-            this.消费查询ToolStripMenuItem.Size = new System.Drawing.Size(240, 30);
+            this.消费查询ToolStripMenuItem.Size = new System.Drawing.Size(152, 30);
             this.消费查询ToolStripMenuItem.Text = "消费查询";
             this.消费查询ToolStripMenuItem.Click += new System.EventHandler(this.消费查询ToolStripMenuItem_Click);
             // 
             // 结账ToolStripMenuItem
             // 
             this.结账ToolStripMenuItem.Name = "结账ToolStripMenuItem";
-            this.结账ToolStripMenuItem.Size = new System.Drawing.Size(240, 30);
+            this.结账ToolStripMenuItem.Size = new System.Drawing.Size(152, 30);
             this.结账ToolStripMenuItem.Text = "结账";
             this.结账ToolStripMenuItem.Click += new System.EventHandler(this.结账ToolStripMenuItem_Click);
             // 
@@ -333,6 +333,7 @@
             this.Name = "frmMain";
             this.Text = "餐饮管理系统主页";
             this.Activated += new System.EventHandler(this.frmMain_Activated);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
