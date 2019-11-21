@@ -82,9 +82,9 @@ namespace MrCy
 
                 treeView1.ExpandAll();
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-                MessageBox.Show("加载菜品信息失败" + ex);
+                MessageBox.Show("加载菜品信息失败" );
             }
 
             // 设置CustomerID
@@ -138,7 +138,12 @@ namespace MrCy
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-
+           /* //如果点击菜品后，没有这道菜，那就禁用右键查看供能
+            string foodName = treeView1.SelectedNode.Text.ToString().Trim();
+            if (!this.isAddToMenu(foodName))
+            {
+                this.contextMenuStrip1.Items[1].Enabled = false;
+            }*/
         }
 
         private void treeView1_DoubleClick(object sender, EventArgs e)
@@ -241,6 +246,7 @@ namespace MrCy
 
             // 刷新dataGridView
             this.getData();
+
         }
 
         private int getIDOfMenu()
@@ -323,31 +329,46 @@ namespace MrCy
 
             }
         }
+     /*   private bool isAddToMenu(string foodname)
+        {
+            try
+            {
+                SQLiteDataReader sdr = queryFoodInThisCustom(foodname);
+                string jduge = sdr["foodname"].ToString();
+                return true;
+            }
+            catch (System.InvalidOperationException)
+            {
+                return false;
+            }
+        
 
+        }*/
         private void 查看ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string foodName = "";
            
             if (treeView1.SelectedNode.Nodes.Count == 0)
             {
-                    foodName = treeView1.SelectedNode.Text.ToString().Trim();
-
+                foodName = treeView1.SelectedNode.Text.ToString().Trim();
                 try
                 {
+                    
                     SQLiteDataReader sdr = queryFoodInThisCustom(foodName);
+                    
                     // 展现数据
                     this.textAllPrice.Text = sdr["foodallprice"].ToString().Trim();
                     this.textBZ.Text = sdr["beizhu"].ToString().Trim();
                     this.textNumber.Text = sdr["foodsum"].ToString().Trim();
                     this.textName.Text = sdr["foodname"].ToString().Trim();
-                    
+                    this.textAllPrice.Text = sdr["foodallprice"].ToString().Trim();
 
                     sdr.Close();
                 }
-                catch(Exception ex)
+                catch(Exception)
                 {
 
-                    MessageBox.Show("该菜品没有下单"+ ex);
+                    MessageBox.Show("该菜品没有下单");
 
                 }
 
