@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-
+/*using System.Data.SqlClient;*/
+using System.Data.SQLite;
 
 namespace MrCy
 {
@@ -45,16 +45,22 @@ namespace MrCy
                     // 数据库登录,用户信息查询
                     try
                     {
-                        using(SqlConnection con = BaseClass.DBConn.CyCon())
+                        using(SQLiteConnection con = BaseClass.DBConn.CyCon())
                         {
                             con.Open();
-                            string sql1 = "select * from tb_User where UserName=N'" + textName.Text + "' and UserPwd=N'" + textPwd.Text + "'";
-                            SqlCommand cmd = new SqlCommand(sql1, con);
-                            SqlDataReader sdr = cmd.ExecuteReader();
+                            /*string sql = "SELECT userName FROM tb_User where userPwd='newman123'";
+                            SQLiteCommand cmd = new SQLiteCommand(sql, con);
+                            SQLiteDataReader sdr = cmd.ExecuteReader();
+                            sdr.Read();
+                            this.textBox1.Text = sdr["userName"].ToString().Trim();*/
+                            /*MessageBox.Show("连接成功");*/
+                            string sql1 = "select * from tb_User where userName='" + textName.Text.Trim() + "' and userPwd='" + textPwd.Text.Trim() + "'";
+                            SQLiteCommand cmd = new SQLiteCommand(sql1, con);
+                            SQLiteDataReader sdr = cmd.ExecuteReader();
                             while (sdr.Read())
                             {
-                                string userName = sdr["UserName"].ToString().Trim();
-                                string userPwd = sdr["UserPwd"].ToString().Trim();
+                                string userName = sdr["userName"].ToString().Trim();
+                                string userPwd = sdr["userPwd"].ToString().Trim();
                                 // 判断是否存在该用户
                                 if (userName == this.textName.Text.Trim() && userPwd == this.textPwd.Text.Trim())
                                 {

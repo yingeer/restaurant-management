@@ -7,14 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
+/*using System.Data.SqlClient;*/
+using System.Data.SQLite;
 
 namespace MrCy
 {
     public partial class frmOpen : Form
     {
         public string Rname;
-        private SqlConnection con;
+        private SQLiteConnection con;
         public frmOpen()
         {
             InitializeComponent();
@@ -22,11 +23,9 @@ namespace MrCy
 
         private void frmOpen_Load(object sender, EventArgs e)
         {
-            // TODO: 这行代码将数据加载到表“mrCyDataSet.tb_Waiter”中。您可以根据需要移动或删除它。
-            this.tb_WaiterTableAdapter.Fill(this.mrCyDataSet.tb_Waiter);
-            // TODO: 这行代码将数据加载到表“mrCyDataSet.tb_Room”中。您可以根据需要移动或删除它。
-            this.tb_RoomTableAdapter.Fill(this.mrCyDataSet.tb_Room);
-
+            // TODO: 这行代码将数据加载到表“dataSet1.tb_Waiter”中。您可以根据需要移动或删除它。
+            this.tb_WaiterTableAdapter.Fill(this.dataSet1.tb_Waiter);
+            
             // 数据库连接
             this.con = BaseClass.DBConn.CyCon();
             try
@@ -72,8 +71,8 @@ namespace MrCy
             {
                 // 表单数据验证
                 string RoomName = this.Rname;
-                string GuestName = this.textCustomerName.Text;
-                string WaiterName = this.comboWaiter.SelectedItem.ToString();
+                string GuestName = this.textCustomerName.Text.Trim();
+                string WaiterName = this.comboWaiter.SelectedItem.ToString().Trim();
                 string RoomBZ = this.textBZ.Text;
                 string zhangdanDate = this.dateTimePicker1.Value.ToString();
                 if (this.textCustomerNum.Text == "")
@@ -85,13 +84,13 @@ namespace MrCy
                     
                 // 存入tb_Room表
                 string sql = "update tb_Room set "+ 
-                    "GuestName=N'"+ GuestName+"', "+"WaiterName=N'"+WaiterName+"', "+"RoomBZ=N'"+RoomBZ+"', "+
-                    "zhangdanDate=N'" +zhangdanDate+ "', " + "Num="+customerNum+ " ,RoomZT=N'使用'"+
-                    " where RoomName=N'"+RoomName+"'";
-                SqlCommand cmd = new SqlCommand(sql, con);
+                    "GuestName='"+ GuestName+"', "+"WaiterName='"+WaiterName+"', "+"RoomBZ='"+RoomBZ+"', "+
+                    "zhangdanDate='" +zhangdanDate+ "', " + "Num="+customerNum+ " ,RoomZT='使用'"+
+                    " where RoomName='"+RoomName+"'";
+                SQLiteCommand cmd = new SQLiteCommand(sql, con);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("数据插入成功");
-
+                this.Close();
             }
             catch (Exception ex)
             {

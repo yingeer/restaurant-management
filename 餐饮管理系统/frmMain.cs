@@ -7,12 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
+/*using System.Data.SqlClient;*/
+using System.Data.SQLite;
+
 namespace MrCy
 {
     public partial class frmMain : Form
     {
-        public SqlDataReader sdr;
+        public SQLiteDataReader sdr;
         // 从login接收
         public string power = "0"; // 登录用户权限
         public string Names;
@@ -69,13 +71,13 @@ namespace MrCy
         {
             listView1.Items.Clear();
             // 链接数据库
-            SqlConnection con = BaseClass.DBConn.CyCon();
+            SQLiteConnection con = BaseClass.DBConn.CyCon();
             try
             {
                 con.Open();
                 
                 string sql = "select * from tb_Room";
-                SqlCommand cmd = new SqlCommand(sql, con);
+                SQLiteCommand cmd = new SQLiteCommand(sql, con);
                 this.sdr = cmd.ExecuteReader();
                 while(sdr.Read())
                 {
@@ -160,7 +162,7 @@ namespace MrCy
         private void listView1_Click(object sender, EventArgs e)
         {
             string roomName = listView1.SelectedItems[0].SubItems[0].Text.Substring(0, 5);
-            SqlConnection con = BaseClass.DBConn.CyCon();
+            SQLiteConnection con = BaseClass.DBConn.CyCon();
             try
             {
                 con.Open();
@@ -172,8 +174,8 @@ namespace MrCy
             
             try
             {
-                string sql = "select * from tb_Room where RoomName=N'" + roomName + "'";
-                SqlCommand cmd = new SqlCommand(sql, con);
+                string sql = "select * from tb_Room where RoomName='" + roomName + "'";
+                SQLiteCommand cmd = new SQLiteCommand(sql, con);
                 this.sdr = cmd.ExecuteReader();
                 while (sdr.Read())
                 {
@@ -229,7 +231,7 @@ namespace MrCy
             {
                 // 取消开台，更改tb_Room的RoomZT，删除tb_GuestFood这条记录
                 string name = listView1.SelectedItems[0].SubItems[0].Text.Substring(0, 5);
-                SqlConnection con = BaseClass.DBConn.CyCon();
+                SQLiteConnection con = BaseClass.DBConn.CyCon();
                 try
                 {
                     con.Open();
@@ -240,15 +242,15 @@ namespace MrCy
                 }
                 try
                 {
-                    string sql = "update tb_Room  set  RoomZT='空闲', Num=0 where RoomName=N'" + name +"'";
-                    SqlCommand cmd = new SqlCommand(sql, con);
+                    string sql = "update tb_Room  set  RoomZT='空闲', Num=0 where RoomName='" + name +"'";
+                    SQLiteCommand cmd = new SQLiteCommand(sql, con);
                     int rows = cmd.ExecuteNonQuery();
                     if (rows > 0)
                     {
                         MessageBox.Show("取消开台执行成功");
                     }
-                    sql = "delete from tb_GuestFood where zhuotai=N'"+name+"'";
-                    cmd = new SqlCommand(sql, con);
+                    sql = "delete from tb_GuestFood where zhuotai='"+name+"'";
+                    cmd = new SQLiteCommand(sql, con);
                     cmd.ExecuteNonQuery();
                 }
                 catch (Exception ex)

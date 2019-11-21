@@ -33,5 +33,15 @@ namespace MrCy.Properties {
                 return ((string)(this["MrCyConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=D:\\学习资料\\computer\\C#开发记录\\餐饮管理系统\\餐饮管理系统\\bin\\Debug\\DB\\MrCy.db")]
+        public string ConnectionString {
+            get {
+                return ((string)(this["ConnectionString"]));
+            }
+        }
     }
 }

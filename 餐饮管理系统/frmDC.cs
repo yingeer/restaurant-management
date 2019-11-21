@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
+/*using System.Data.SqlClient;*/
 using System.Data.SQLite;
 
 namespace MrCy
@@ -16,8 +16,8 @@ namespace MrCy
     public partial class frmDC : Form
     {
         public string Rname = "大厅-01";
-        private string waiterName = "";
-        private SqlConnection con;
+        /*private string waiterName = "";*/
+        private SQLiteConnection con;
         private string curPrice = "";
         private string customID = "1";
         private string menuNum = "0";
@@ -29,6 +29,8 @@ namespace MrCy
 
         private void frmDC_Load(object sender, EventArgs e)
         {
+            // TODO: 这行代码将数据加载到表“dataSet1.tb_Waiter”中。您可以根据需要移动或删除它。
+            this.tb_WaiterTableAdapter.Fill(this.dataSet1.tb_Waiter);
             this.Text = this.Rname + " 点菜";
             con = BaseClass.DBConn.CyCon();
             try
@@ -47,9 +49,9 @@ namespace MrCy
                 for (int i = 0; i < foodType.Length; i++)
                 {
                     TreeNode treeNode = treeView1.Nodes[i];
-                    string sql = "select * from tb_Food where FoodTy=N'" + foodType[i] + "'";
-                    SqlCommand cmd = new SqlCommand(sql, con);
-                    SqlDataReader sdr = cmd.ExecuteReader();
+                    string sql = "select * from tb_Food where FoodTy='" + foodType[i] + "'";
+                    SQLiteCommand cmd = new SQLiteCommand(sql, con);
+                    SQLiteDataReader sdr = cmd.ExecuteReader();
                     while (sdr.Read())
                     {
                         treeNode.Nodes.Add(sdr["FoodName"].ToString().Trim());
@@ -59,11 +61,12 @@ namespace MrCy
                 try
                 {
                     // 判断桌台状态，空闲则禁用
-                    string sql = "select * from tb_Room where RoomName=N'" + this.Rname + "'";
-                    SqlCommand cmd = new SqlCommand(sql, con);
-                    SqlDataReader sdr = cmd.ExecuteReader();
+                    string sql = "select * from tb_Room where RoomName='" + this.Rname + "'";
+                    SQLiteCommand cmd = new SQLiteCommand(sql, con);
+                    SQLiteDataReader sdr = cmd.ExecuteReader();
                     sdr.Read();
-                    this.waiterName = sdr["WaiterName"].ToString().Trim();
+                    /*this.waiterName = sdr["WaiterName"].ToString().Trim();*/
+
                     if (sdr["RoomZT"].ToString().Trim() == "空闲")
                     {
                         this.buttonSave.Enabled = false;
@@ -98,8 +101,8 @@ namespace MrCy
             string customID = "1";
 
             string sql = "select max(zhangdanID) as customID from tb_GuestFood";
-            SqlCommand cmd = new SqlCommand(sql, con);
-            SqlDataReader sdr = cmd.ExecuteReader();
+            SQLiteCommand cmd = new SQLiteCommand(sql, con);
+            SQLiteDataReader sdr = cmd.ExecuteReader();
             try { 
                 sdr.Read();
                 customID = (int.Parse(sdr["customID"].ToString().Trim()) + 1).ToString();
@@ -160,9 +163,9 @@ namespace MrCy
             else
             { 
                     // 获得该菜品信息
-                    string sql = "select * from tb_Food where FoodName=N'" + foodName + "'";
-                    SqlCommand cmd = new SqlCommand(sql, con);
-                    SqlDataReader sdr = cmd.ExecuteReader();
+                    string sql = "select * from tb_Food where FoodName='" + foodName + "'";
+                    SQLiteCommand cmd = new SQLiteCommand(sql, con);
+                    SQLiteDataReader sdr = cmd.ExecuteReader();
                     while (sdr.Read())
                     {
 
@@ -171,7 +174,7 @@ namespace MrCy
                         this.textPrice.Text = price; // 该food单个价格
                         this.curPrice = price; //传给this.curPrice,给计算按钮用
                         this.textName.Text = foodName;
-                        this.textWaiterName.Text = this.waiterName;
+                        /*this.textWaiterName.Text = this.textName.Text.ToString().Trim();*/
                         this.textNumber.Text = "1";
                         this.textAllPrice.Text = "0"; // 每次双击清零
                     }
@@ -218,12 +221,12 @@ namespace MrCy
             {    
                 string sql = "insert into tb_GuestFood (ID, foodname, foodsum, foodallprice, waitername, beizhu, zhuotai, zhangdanID) " +
                     "values (" +
-                    nextMenuID + ", N'" + this.textName.Text +
+                    nextMenuID + ", '" + this.textName.Text +
                 "'," + int.Parse(this.textNumber.Text) + "," + float.Parse(this.textAllPrice.Text) +
-                ", N'" + this.waiterName + "',N'" + this.textBZ.Text +
-                "', N'" + this.Rname + "', " + int.Parse(this.customID) +
+                ", '" + this.comboWaiter.SelectedItem.ToString().Trim() + "', '" + this.textBZ.Text +
+                "', '" + this.Rname + "', " + int.Parse(this.customID) +
                ")";
-                SqlCommand cmd = new SqlCommand(sql, con);
+                SQLiteCommand cmd = new SQLiteCommand(sql, con);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("保存成功");
             } 
@@ -244,8 +247,8 @@ namespace MrCy
         {
             int IDNum = 0;
             string sql = "select count(ID) as total from tb_GuestFood";
-            SqlCommand cmd = new SqlCommand(sql, con);
-            SqlDataReader sdr = cmd.ExecuteReader();
+            SQLiteCommand cmd = new SQLiteCommand(sql, con);
+            SQLiteDataReader sdr = cmd.ExecuteReader();
             try
             {
                 sdr.Read();
@@ -268,8 +271,8 @@ namespace MrCy
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 string foodName = dataGridView1.SelectedCells[0].Value.ToString();
-                string sql = "delete from tb_GuestFood where foodname=N'"+foodName+"' and zhangdanID="+int.Parse(this.customID) ;
-                SqlCommand cmd = new SqlCommand(sql, con);
+                string sql = "delete from tb_GuestFood where foodname='"+foodName+"' and zhangdanID="+int.Parse(this.customID) ;
+                SQLiteCommand cmd = new SQLiteCommand(sql, con);
                 int rows = cmd.ExecuteNonQuery();
                 if (rows <= 0)
                 {
@@ -288,11 +291,11 @@ namespace MrCy
             
         }
 
-        private SqlDataReader queryFoodInThisCustom(string foodName)
+        private SQLiteDataReader queryFoodInThisCustom(string foodName)
         {
-                string sql = "select * from tb_GuestFood where foodname=N'" + foodName + "' and " + "zhangdanID=" + int.Parse(this.customID);
-                SqlCommand cmd = new SqlCommand(sql, con);
-                SqlDataReader sdr = cmd.ExecuteReader();
+                string sql = "select * from tb_GuestFood where foodname='" + foodName + "' and " + "zhangdanID=" + int.Parse(this.customID);
+                SQLiteCommand cmd = new SQLiteCommand(sql, con);
+                SQLiteDataReader sdr = cmd.ExecuteReader();
                 sdr.Read();
                 return sdr;
         }
@@ -331,13 +334,13 @@ namespace MrCy
 
                 try
                 {
-                    SqlDataReader sdr = queryFoodInThisCustom(foodName);
+                    SQLiteDataReader sdr = queryFoodInThisCustom(foodName);
                     // 展现数据
                     this.textAllPrice.Text = sdr["foodallprice"].ToString().Trim();
                     this.textBZ.Text = sdr["beizhu"].ToString().Trim();
                     this.textNumber.Text = sdr["foodsum"].ToString().Trim();
                     this.textName.Text = sdr["foodname"].ToString().Trim();
-                    this.textWaiterName.Text = sdr["waitername"].ToString().Trim();
+                    
 
                     sdr.Close();
                 }
@@ -359,11 +362,12 @@ namespace MrCy
 
         private void getData()
         {
-            string sql = "select foodname, foodsum, foodallprice, beizhu, zhuotai, zhangdanID from tb_GuestFood where zhangdanID="+int.Parse(this.customID);
-            SqlDataAdapter sda = new SqlDataAdapter(sql, con);
+            string sql = "select foodname, foodsum, foodallprice, beizhu, zhuotai, zhangdanID from tb_GuestFood where zhangdanID=" + int.Parse(this.customID);
+            SQLiteDataAdapter sda = new SQLiteDataAdapter(sql, con);
             DataSet ds = new DataSet();
             sda.Fill(ds);
             dataGridView1.DataSource = ds.Tables[0];
         }
     }
 }
+

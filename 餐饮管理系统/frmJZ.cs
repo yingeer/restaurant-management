@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
+/*using System.Data.SqlClient;*/
+using System.Data.SQLite;
 using System.Collections;
 
 namespace MrCy
@@ -15,7 +16,7 @@ namespace MrCy
     public partial class frmJZ : Form
     {
         public string Rname="大厅-01";
-        public SqlConnection con;
+        public SQLiteConnection con;
         public float sum = 0;
         /*  功能分析
          *  根据Rname 最大zhangdanID做查询，查出消费记录
@@ -36,7 +37,7 @@ namespace MrCy
             string sql = "select max(zhangdanID) as customID from tb_GuestFood where zhuotai='"+Rname+"'";
             try
             {
-                SqlDataReader sdr = getReader(sql);
+                SQLiteDataReader sdr = getReader(sql);
                 sdr.Read();
                 customID = sdr["customID"].ToString().Trim();
                 sdr.Close();
@@ -60,7 +61,7 @@ namespace MrCy
             ArrayList priceList = new ArrayList();//实例化集合
             try
             {
-                SqlDataReader sdr = getReader(sql);
+                SQLiteDataReader sdr = getReader(sql);
                 while (sdr.Read())
                 {
                     float p = float.Parse(sdr["foodallprice"].ToString().Trim());
@@ -84,16 +85,16 @@ namespace MrCy
 
         private void getDataToGridView(string sql)
         {
-            SqlDataAdapter sda = new SqlDataAdapter(sql, con);
+            SQLiteDataAdapter sda = new SQLiteDataAdapter(sql, con);
             DataSet ds = new DataSet();
             sda.Fill(ds);
             dataGridView1.DataSource = ds.Tables[0];
         }
 
-        private SqlDataReader getReader(string sql)
+        private SQLiteDataReader getReader(string sql)
         {
-            SqlCommand cmd = new SqlCommand(sql, con);
-            SqlDataReader sdr = cmd.ExecuteReader();
+            SQLiteCommand cmd = new SQLiteCommand(sql, con);
+            SQLiteDataReader sdr = cmd.ExecuteReader();
             return sdr;
         }
 

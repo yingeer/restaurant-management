@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("锅底");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("配菜");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("主食");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("主食");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("配菜");
             System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("烟酒");
             this.textName = new System.Windows.Forms.TextBox();
             this.textNum = new System.Windows.Forms.TextBox();
@@ -42,6 +42,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.添加ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.查看ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
@@ -52,19 +55,21 @@
             this.textAllPrice = new System.Windows.Forms.TextBox();
             this.textBZ = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textWaiterName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.添加ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.查看ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.comboWaiter = new System.Windows.Forms.ComboBox();
+            this.tbWaiterBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSet1 = new MrCy.DataSet1();
+            this.tb_WaiterTableAdapter = new MrCy.DataSet1TableAdapters.tb_WaiterTableAdapter();
+            this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbWaiterBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // textName
@@ -144,10 +149,10 @@
             treeNode1.Name = "guodi";
             treeNode1.Text = "锅底";
             treeNode1.ToolTipText = "菜品";
-            treeNode2.Name = "peicai";
-            treeNode2.Text = "配菜";
-            treeNode3.Name = "zhushi";
-            treeNode3.Text = "主食";
+            treeNode2.Name = "zhushi";
+            treeNode2.Text = "主食";
+            treeNode3.Name = "peicai";
+            treeNode3.Text = "配菜";
             treeNode4.Name = "yanjiu";
             treeNode4.Text = "烟酒";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
@@ -160,6 +165,30 @@
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             this.treeView1.Click += new System.EventHandler(this.treeView1_Click);
             this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.添加ToolStripMenuItem,
+            this.查看ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(117, 64);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            // 
+            // 添加ToolStripMenuItem
+            // 
+            this.添加ToolStripMenuItem.Name = "添加ToolStripMenuItem";
+            this.添加ToolStripMenuItem.Size = new System.Drawing.Size(116, 30);
+            this.添加ToolStripMenuItem.Text = "添加";
+            this.添加ToolStripMenuItem.Click += new System.EventHandler(this.添加ToolStripMenuItem_Click);
+            // 
+            // 查看ToolStripMenuItem
+            // 
+            this.查看ToolStripMenuItem.Name = "查看ToolStripMenuItem";
+            this.查看ToolStripMenuItem.Size = new System.Drawing.Size(116, 30);
+            this.查看ToolStripMenuItem.Text = "查看";
+            this.查看ToolStripMenuItem.Click += new System.EventHandler(this.查看ToolStripMenuItem_Click);
             // 
             // buttonSave
             // 
@@ -250,13 +279,6 @@
             this.label10.Text = "菜品";
             this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
-            // textWaiterName
-            // 
-            this.textWaiterName.Location = new System.Drawing.Point(455, 180);
-            this.textWaiterName.Name = "textWaiterName";
-            this.textWaiterName.Size = new System.Drawing.Size(82, 28);
-            this.textWaiterName.TabIndex = 30;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -312,29 +334,30 @@
             this.dataGridView1.Size = new System.Drawing.Size(527, 170);
             this.dataGridView1.TabIndex = 34;
             // 
-            // contextMenuStrip1
+            // comboWaiter
             // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.添加ToolStripMenuItem,
-            this.查看ToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(117, 64);
-            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            this.comboWaiter.DataSource = this.tbWaiterBindingSource;
+            this.comboWaiter.DisplayMember = "WaiterNmae";
+            this.comboWaiter.FormattingEnabled = true;
+            this.comboWaiter.Location = new System.Drawing.Point(467, 180);
+            this.comboWaiter.Name = "comboWaiter";
+            this.comboWaiter.Size = new System.Drawing.Size(105, 26);
+            this.comboWaiter.TabIndex = 35;
+            this.comboWaiter.ValueMember = "WaiterNmae";
             // 
-            // 添加ToolStripMenuItem
+            // tbWaiterBindingSource
             // 
-            this.添加ToolStripMenuItem.Name = "添加ToolStripMenuItem";
-            this.添加ToolStripMenuItem.Size = new System.Drawing.Size(240, 30);
-            this.添加ToolStripMenuItem.Text = "添加";
-            this.添加ToolStripMenuItem.Click += new System.EventHandler(this.添加ToolStripMenuItem_Click);
+            this.tbWaiterBindingSource.DataMember = "tb_Waiter";
+            this.tbWaiterBindingSource.DataSource = this.dataSet1;
             // 
-            // 查看ToolStripMenuItem
+            // dataSet1
             // 
-            this.查看ToolStripMenuItem.Name = "查看ToolStripMenuItem";
-            this.查看ToolStripMenuItem.Size = new System.Drawing.Size(240, 30);
-            this.查看ToolStripMenuItem.Text = "查看";
-            this.查看ToolStripMenuItem.Click += new System.EventHandler(this.查看ToolStripMenuItem_Click);
+            this.dataSet1.DataSetName = "DataSet1";
+            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tb_WaiterTableAdapter
+            // 
+            this.tb_WaiterTableAdapter.ClearBeforeFill = true;
             // 
             // frmDC
             // 
@@ -344,11 +367,11 @@
             this.BackgroundImage = global::MrCy.Properties.Resources.图片2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(833, 540);
+            this.Controls.Add(this.comboWaiter);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textWaiterName);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.textBZ);
             this.Controls.Add(this.textAllPrice);
@@ -376,10 +399,12 @@
             this.Text = "点菜";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmDC_FormClosed);
             this.Load += new System.EventHandler(this.frmDC_Load);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tbWaiterBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -406,7 +431,6 @@
         private System.Windows.Forms.TextBox textAllPrice;
         private System.Windows.Forms.TextBox textBZ;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textWaiterName;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.StatusStrip statusStrip1;
@@ -416,5 +440,9 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 添加ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 查看ToolStripMenuItem;
+        private System.Windows.Forms.ComboBox comboWaiter;
+        private DataSet1 dataSet1;
+        private System.Windows.Forms.BindingSource tbWaiterBindingSource;
+        private DataSet1TableAdapters.tb_WaiterTableAdapter tb_WaiterTableAdapter;
     }
 }

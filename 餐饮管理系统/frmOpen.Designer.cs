@@ -42,14 +42,13 @@
             this.textBZ = new System.Windows.Forms.TextBox();
             this.comboWaiter = new System.Windows.Forms.ComboBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.mrCyDataSet = new MrCy.MrCyDataSet();
-            this.tbRoomBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tb_RoomTableAdapter = new MrCy.MrCyDataSetTableAdapters.tb_RoomTableAdapter();
-            this.tbWaiterBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tb_WaiterTableAdapter = new MrCy.MrCyDataSetTableAdapters.tb_WaiterTableAdapter();
             this.textRname = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.mrCyDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbRoomBindingSource)).BeginInit();
+            this.dataSet1 = new MrCy.DataSet1();
+            this.dataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tbWaiterBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tb_WaiterTableAdapter = new MrCy.DataSet1TableAdapters.tb_WaiterTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbWaiterBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -169,35 +168,31 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(186, 28);
             this.dateTimePicker1.TabIndex = 14;
             // 
-            // mrCyDataSet
-            // 
-            this.mrCyDataSet.DataSetName = "MrCyDataSet";
-            this.mrCyDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tbRoomBindingSource
-            // 
-            this.tbRoomBindingSource.DataMember = "tb_Room";
-            this.tbRoomBindingSource.DataSource = this.mrCyDataSet;
-            // 
-            // tb_RoomTableAdapter
-            // 
-            this.tb_RoomTableAdapter.ClearBeforeFill = true;
-            // 
-            // tbWaiterBindingSource
-            // 
-            this.tbWaiterBindingSource.DataMember = "tb_Waiter";
-            this.tbWaiterBindingSource.DataSource = this.mrCyDataSet;
-            // 
-            // tb_WaiterTableAdapter
-            // 
-            this.tb_WaiterTableAdapter.ClearBeforeFill = true;
-            // 
             // textRname
             // 
             this.textRname.Location = new System.Drawing.Point(186, 46);
             this.textRname.Name = "textRname";
             this.textRname.Size = new System.Drawing.Size(186, 28);
             this.textRname.TabIndex = 15;
+            // 
+            // dataSet1
+            // 
+            this.dataSet1.DataSetName = "DataSet1";
+            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dataSet1BindingSource
+            // 
+            this.dataSet1BindingSource.DataSource = this.dataSet1;
+            this.dataSet1BindingSource.Position = 0;
+            // 
+            // tbWaiterBindingSource
+            // 
+            this.tbWaiterBindingSource.DataMember = "tb_Waiter";
+            this.tbWaiterBindingSource.DataSource = this.dataSet1;
+            // 
+            // tb_WaiterTableAdapter
+            // 
+            this.tb_WaiterTableAdapter.ClearBeforeFill = true;
             // 
             // frmOpen
             // 
@@ -227,8 +222,8 @@
             this.ShowIcon = false;
             this.Text = "开台单";
             this.Load += new System.EventHandler(this.frmOpen_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.mrCyDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbRoomBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbWaiterBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -250,11 +245,10 @@
         private System.Windows.Forms.TextBox textBZ;
         private System.Windows.Forms.ComboBox comboWaiter;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private MrCyDataSet mrCyDataSet;
-        private System.Windows.Forms.BindingSource tbRoomBindingSource;
-        private MrCyDataSetTableAdapters.tb_RoomTableAdapter tb_RoomTableAdapter;
-        private System.Windows.Forms.BindingSource tbWaiterBindingSource;
-        private MrCyDataSetTableAdapters.tb_WaiterTableAdapter tb_WaiterTableAdapter;
         private System.Windows.Forms.TextBox textRname;
+        private System.Windows.Forms.BindingSource dataSet1BindingSource;
+        private DataSet1 dataSet1;
+        private System.Windows.Forms.BindingSource tbWaiterBindingSource;
+        private DataSet1TableAdapters.tb_WaiterTableAdapter tb_WaiterTableAdapter;
     }
 }
