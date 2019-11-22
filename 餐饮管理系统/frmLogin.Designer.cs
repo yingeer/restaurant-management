@@ -106,7 +106,6 @@
             this.label3.Size = new System.Drawing.Size(464, 74);
             this.label3.TabIndex = 6;
             this.label3.Text = "餐饮管理系统";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // frmLogin
             // 
@@ -128,7 +127,6 @@
             this.Name = "frmLogin";
             this.ShowIcon = false;
             this.Text = "登录";
-            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

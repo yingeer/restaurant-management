@@ -23,13 +23,10 @@ namespace MrCy
             InitializeComponent();
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
+            SQLiteConnection con = BaseClass.DBConn.CyCon();
+            con.Open();
             if (textName.Text == "")
             {
                 MessageBox.Show("请输入用户名", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -43,8 +40,7 @@ namespace MrCy
                 else
                 {
                     // 数据库登录,用户信息查询
-                    SQLiteConnection con = BaseClass.DBConn.CyCon();
-                    con.Open();
+                    
                     try
                     {
                         string sql1 = "select * from tb_User where userName='" + textName.Text.Trim() + "' and userPwd='" + textPwd.Text.Trim() + "'";
@@ -60,25 +56,24 @@ namespace MrCy
                                     this.userName = userName;
                                     this.power = sdr["power"].ToString().Trim();
                                     this.now = DateTime.Now.ToString();
-                                    // 进入Main窗口
-                                    this.getInMain();
+                                break;
                             }
                         }
                         sdr.Close();
+                        con.Close();
+                      /*  MessageBox.Show("con关闭");*/
+                        // 进入Main窗口
+                        this.getInMain();
                        
                     }
-
                     catch (Exception ex)
                     {
                         MessageBox.Show("登录失败，请检查用户名或密码!" + ex, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    finally
-                    {
-                        con.Close();
-                    }
                 }
             }
-
+           
+            
         }
 
         private void getInMain()
@@ -89,13 +84,8 @@ namespace MrCy
             main.Names = this.userName;
             main.power = this.power;
             MessageBox.Show("欢迎 " + this.userName);
-            this.Hide();
-            main.ShowDialog();
             
-        }
-
-        private void frmLogin_Load(object sender, EventArgs e)
-        {
+            main.ShowDialog();
             
         }
 
