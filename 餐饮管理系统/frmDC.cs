@@ -17,7 +17,6 @@ namespace MrCy
     {
         public string Rname = "大厅-01";
         /*private string waiterName = "";*/
-        private SQLiteConnection con;
         private string curPrice = "";
         private string customID = "1";
         private string menuNum = "0";
@@ -32,16 +31,8 @@ namespace MrCy
             // TODO: 这行代码将数据加载到表“dataSet1.tb_Waiter”中。您可以根据需要移动或删除它。
             this.tb_WaiterTableAdapter.Fill(this.dataSet1.tb_Waiter);
             this.Text = this.Rname + " 点菜";
-            con = BaseClass.DBConn.CyCon();
-            try
-            {
-                con.Open();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("数据库连接失败");
-
-            }
+            SQLiteConnection con = BaseClass.DBConn.CyCon();
+            con.Open();
             // 添加左侧treeView信息
             try
             {
@@ -58,35 +49,16 @@ namespace MrCy
                     }
                     sdr.Close();
                 }
-                try
-                {
-                    // 判断桌台状态，空闲则禁用
-                    string sql = "select * from tb_Room where RoomName='" + this.Rname + "'";
-                    SQLiteCommand cmd = new SQLiteCommand(sql, con);
-                    SQLiteDataReader sdr = cmd.ExecuteReader();
-                    sdr.Read();
-                    /*this.waiterName = sdr["WaiterName"].ToString().Trim();*/
-
-                    if (sdr["RoomZT"].ToString().Trim() == "空闲")
-                    {
-                        this.buttonSave.Enabled = false;
-                        this.buttonDelete.Enabled = false;
-                        MessageBox.Show("此桌台为空闲状态");
-                    }
-                    sdr.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex + "");
-                }
-
+                
                 treeView1.ExpandAll();
             }
             catch (Exception )
             {
                 MessageBox.Show("加载菜品信息失败" );
             }
-
+            con.Close();
+            // 判断桌台状态，空闲则禁用
+            jdugeTableState();
             // 设置CustomerID
             string customID = getCurCustomID();
             this.toolStripStatusLabel2.Text = customID;
@@ -94,9 +66,43 @@ namespace MrCy
             this.textNum.Text = "1";
 
         }
+        private void jdugeTableState()
+        {
+            SQLiteConnection con = BaseClass.DBConn.CyCon();
+            con.Open();
+            try
+            {
+                // 判断桌台状态，空闲则禁用
+                string sql = "select * from tb_Room where RoomName='" + this.Rname + "'";
+                SQLiteCommand cmd = new SQLiteCommand(sql, con);
+                SQLiteDataReader sdr = cmd.ExecuteReader();
+                sdr.Read();
+                /*this.waiterName = sdr["WaiterName"].ToString().Trim();*/
+
+                if (sdr["RoomZT"].ToString().Trim() == "空闲")
+                {
+                    this.buttonSave.Enabled = false;
+                    this.buttonDelete.Enabled = false;
+                    MessageBox.Show("此桌台为空闲状态");
+                }
+                sdr.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex + "");
+            }
+            finally
+            {
+                con.Close();
+            }
+
+        }
+
 
         private string getCurCustomID()
         {
+            SQLiteConnection con = BaseClass.DBConn.CyCon();
+            con.Open();
             // 消费编号
             string customID = "1";
 
@@ -116,6 +122,7 @@ namespace MrCy
             finally
             {
                 sdr.Close();
+                con.Close();
             }
 
             return customID;
@@ -133,7 +140,7 @@ namespace MrCy
 
         private void frmDC_FormClosed(object sender, FormClosedEventArgs e)
         {
-            con.Close();
+           
         }
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
@@ -148,7 +155,8 @@ namespace MrCy
 
         private void treeView1_DoubleClick(object sender, EventArgs e)
         {
-            
+            SQLiteConnection con = BaseClass.DBConn.CyCon();
+            con.Open();
             string foodName = "";
             // 在treeView中选择一项, 防止乱双击
             try
@@ -185,6 +193,7 @@ namespace MrCy
                     }
                     sdr.Close();
                 }
+            con.Close();
             
         }
 
@@ -195,10 +204,10 @@ namespace MrCy
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
+            
             DialogResult dia = MessageBox.Show("确定退出吗？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
             if (dia == DialogResult.OK)
             {
-                con.Close();
                 this.Close();
             }
         }
@@ -220,6 +229,8 @@ namespace MrCy
         
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            SQLiteConnection con = BaseClass.DBConn.CyCon();
+            con.Open();
             int nextMenuID = getIDOfMenu() + 1;
             
             try
@@ -239,6 +250,10 @@ namespace MrCy
             {
                 MessageBox.Show("请不要保存点菜号相同的菜品" + ex);
             }
+            finally
+            {
+                con.Close();
+            }
 
             // 菜单编号 +1
             this.addMenuNum();
@@ -251,6 +266,8 @@ namespace MrCy
 
         private int getIDOfMenu()
         {
+            SQLiteConnection con = BaseClass.DBConn.CyCon();
+            con.Open();
             int IDNum = 0;
             string sql = "select count(ID) as total from tb_GuestFood";
             SQLiteCommand cmd = new SQLiteCommand(sql, con);
@@ -268,12 +285,15 @@ namespace MrCy
             finally
             {
                 sdr.Close();
+                con.Close();
             }
             return IDNum;
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
+            SQLiteConnection con = BaseClass.DBConn.CyCon();
+            con.Open();
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 string foodName = dataGridView1.SelectedCells[0].Value.ToString();
@@ -289,6 +309,7 @@ namespace MrCy
             {
                 MessageBox.Show("请选择消费的菜品");
             }
+            con.Close();
             getData();
         }
 
@@ -297,9 +318,9 @@ namespace MrCy
             
         }
 
-        private SQLiteDataReader queryFoodInThisCustom(string foodName)
+        private SQLiteDataReader queryFoodInThisCustom(string foodName, SQLiteConnection con)
         {
-                string sql = "select * from tb_GuestFood where foodname='" + foodName + "' and " + "zhangdanID=" + int.Parse(this.customID);
+            string sql = "select * from tb_GuestFood where foodname='" + foodName + "' and " + "zhangdanID=" + int.Parse(this.customID);
                 SQLiteCommand cmd = new SQLiteCommand(sql, con);
                 SQLiteDataReader sdr = cmd.ExecuteReader();
                 sdr.Read();
@@ -346,6 +367,9 @@ namespace MrCy
         }*/
         private void 查看ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+            SQLiteConnection con = BaseClass.DBConn.CyCon();
+            con.Open();
             string foodName = "";
            
             if (treeView1.SelectedNode.Nodes.Count == 0)
@@ -354,7 +378,7 @@ namespace MrCy
                 try
                 {
                     
-                    SQLiteDataReader sdr = queryFoodInThisCustom(foodName);
+                    SQLiteDataReader sdr = queryFoodInThisCustom(foodName, con);
                     
                     // 展现数据
                     this.textAllPrice.Text = sdr["foodallprice"].ToString().Trim();
@@ -377,17 +401,21 @@ namespace MrCy
             {
                     MessageBox.Show("请选择菜品");
             }
-            
+            con.Close();
+
 
         }
 
         private void getData()
         {
+            SQLiteConnection con = BaseClass.DBConn.CyCon();
+            con.Open();
             string sql = "select foodname, foodsum, foodallprice, beizhu, zhuotai, zhangdanID from tb_GuestFood where zhangdanID=" + int.Parse(this.customID);
             SQLiteDataAdapter sda = new SQLiteDataAdapter(sql, con);
             DataSet ds = new DataSet();
             sda.Fill(ds);
             dataGridView1.DataSource = ds.Tables[0];
+            con.Close();
         }
     }
 }

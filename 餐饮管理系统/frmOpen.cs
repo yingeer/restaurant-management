@@ -15,7 +15,7 @@ namespace MrCy
     public partial class frmOpen : Form
     {
         public string Rname;
-        private SQLiteConnection con;
+        
         public frmOpen()
         {
             InitializeComponent();
@@ -25,17 +25,7 @@ namespace MrCy
         {
             // TODO: 这行代码将数据加载到表“dataSet1.tb_Waiter”中。您可以根据需要移动或删除它。
             this.tb_WaiterTableAdapter.Fill(this.dataSet1.tb_Waiter);
-            
-            // 数据库连接
-            this.con = BaseClass.DBConn.CyCon();
-            try
-            {
-                con.Open();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("数据库连接失败" + ex);
-            }
+
             // 传给表单值
             textRname.Text = this.Rname;
         }
@@ -67,6 +57,9 @@ namespace MrCy
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            // 数据库连接
+            SQLiteConnection con = BaseClass.DBConn.CyCon();
+            con.Open();
             try
             {
                 // 表单数据验证
@@ -96,10 +89,10 @@ namespace MrCy
             {
                 MessageBox.Show("数据库操作失败"+ex);
             }
-           /* finally
+            finally
             {
-                this.con.Close();
-            }*/
+                con.Close();
+            }
         }
     }
 }

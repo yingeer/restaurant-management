@@ -16,7 +16,6 @@ namespace MrCy
     public partial class frmJZ : Form
     {
         public string Rname="大厅-01";
-        public SQLiteConnection con;
         public float sum = 0;
         /*  功能分析
          *  根据Rname 最大zhangdanID做查询，查出消费记录
@@ -30,14 +29,14 @@ namespace MrCy
         private void frmJZ_Load(object sender, EventArgs e)
         {
             // 连接数据库
-            con = BaseClass.DBConn.CyCon();
+            SQLiteConnection con= BaseClass.DBConn.CyCon();
             con.Open();
             //显示左侧消费记录
             string customID = "";
             string sql = "select max(zhangdanID) as customID from tb_GuestFood where zhuotai='"+Rname+"'";
             try
             {
-                SQLiteDataReader sdr = getReader(sql);
+                SQLiteDataReader sdr = getReader(sql, con);
                 sdr.Read();
                 customID = sdr["customID"].ToString().Trim();
                 sdr.Close();
@@ -45,6 +44,10 @@ namespace MrCy
             catch
             {
                 MessageBox.Show("该桌台此次账单号查询失败");
+            }
+            finally
+            {
+                con.Close();
             }
             try
             {
@@ -55,20 +58,29 @@ namespace MrCy
             {
                 MessageBox.Show("未消费");
             }
-            
 
+            getConsumeAllAmount(sql);
+
+
+        }
+
+        private void getConsumeAllAmount(string sql)
+        {
+            // 连接数据库
+            SQLiteConnection con = BaseClass.DBConn.CyCon();
+            con.Open();
             // 计算消费总额
             ArrayList priceList = new ArrayList();//实例化集合
             try
             {
-                SQLiteDataReader sdr = getReader(sql);
+                SQLiteDataReader sdr = getReader(sql, con);
                 while (sdr.Read())
                 {
                     float p = float.Parse(sdr["foodallprice"].ToString().Trim());
                     priceList.Add(p);
                 }
                 sdr.Close();
-                float sum=0;
+                float sum = 0;
                 foreach (float each in priceList)
                 {
                     sum += each;
@@ -76,22 +88,27 @@ namespace MrCy
                 this.labelconsume.Text = sum.ToString().Trim();
                 this.sum = sum;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("消费总额查询失败"+ ex);
+                MessageBox.Show("消费总额查询失败" + ex);
             }
-         
-        }
+            finally
+            {
+                con.Close();
+            }
 
+        }
         private void getDataToGridView(string sql)
         {
+            SQLiteConnection con = BaseClass.DBConn.CyCon();
             SQLiteDataAdapter sda = new SQLiteDataAdapter(sql, con);
             DataSet ds = new DataSet();
             sda.Fill(ds);
             dataGridView1.DataSource = ds.Tables[0];
+            con.Close();
         }
 
-        private SQLiteDataReader getReader(string sql)
+        private SQLiteDataReader getReader(string sql, SQLiteConnection con)
         {
             SQLiteCommand cmd = new SQLiteCommand(sql, con);
             SQLiteDataReader sdr = cmd.ExecuteReader();
@@ -124,6 +141,7 @@ namespace MrCy
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
+            SQLiteConnection con = BaseClass.DBConn.CyCon();
             DialogResult dia = MessageBox.Show("确定退出吗？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
             if (dia == DialogResult.OK)
             {
@@ -160,7 +178,7 @@ namespace MrCy
 
         private void frmJZ_FormClosing(object sender, FormClosingEventArgs e)
         {
-            con.Close();
+            
         }
     }
 }

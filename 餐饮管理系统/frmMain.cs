@@ -92,6 +92,7 @@ namespace MrCy
             } 
             finally
             {
+                sdr.Close();
                 con.Close();
             }
 

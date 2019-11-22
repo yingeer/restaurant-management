@@ -43,41 +43,38 @@ namespace MrCy
                 else
                 {
                     // 数据库登录,用户信息查询
+                    SQLiteConnection con = BaseClass.DBConn.CyCon();
+                    con.Open();
                     try
                     {
-                        using(SQLiteConnection con = BaseClass.DBConn.CyCon())
+                        string sql1 = "select * from tb_User where userName='" + textName.Text.Trim() + "' and userPwd='" + textPwd.Text.Trim() + "'";
+                        SQLiteCommand cmd = new SQLiteCommand(sql1, con);
+                        SQLiteDataReader sdr = cmd.ExecuteReader();
+                        while (sdr.Read())
                         {
-                            con.Open();
-                            /*string sql = "SELECT userName FROM tb_User where userPwd='newman123'";
-                            SQLiteCommand cmd = new SQLiteCommand(sql, con);
-                            SQLiteDataReader sdr = cmd.ExecuteReader();
-                            sdr.Read();
-                            this.textBox1.Text = sdr["userName"].ToString().Trim();*/
-                            /*MessageBox.Show("连接成功");*/
-                            string sql1 = "select * from tb_User where userName='" + textName.Text.Trim() + "' and userPwd='" + textPwd.Text.Trim() + "'";
-                            SQLiteCommand cmd = new SQLiteCommand(sql1, con);
-                            SQLiteDataReader sdr = cmd.ExecuteReader();
-                            while (sdr.Read())
-                            {
-                                string userName = sdr["userName"].ToString().Trim();
-                                string userPwd = sdr["userPwd"].ToString().Trim();
+                            string userName = sdr["userName"].ToString().Trim();
+                            string userPwd = sdr["userPwd"].ToString().Trim();
                                 // 判断是否存在该用户
-                                if (userName == this.textName.Text.Trim() && userPwd == this.textPwd.Text.Trim())
-                                {
+                            if (userName == this.textName.Text.Trim() && userPwd == this.textPwd.Text.Trim())
+                            {
                                     this.userName = userName;
                                     this.power = sdr["power"].ToString().Trim();
                                     this.now = DateTime.Now.ToString();
                                     // 进入Main窗口
                                     this.getInMain();
-                                }
                             }
-                            sdr.Close();
                         }
+                        sdr.Close();
+                       
                     }
 
                     catch (Exception ex)
                     {
                         MessageBox.Show("登录失败，请检查用户名或密码!" + ex, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        con.Close();
                     }
                 }
             }
