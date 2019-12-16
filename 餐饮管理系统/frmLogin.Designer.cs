@@ -127,6 +127,7 @@
             this.Name = "frmLogin";
             this.ShowIcon = false;
             this.Text = "登录";
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

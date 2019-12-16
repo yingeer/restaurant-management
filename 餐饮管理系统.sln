@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29418.71
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrCy", "餐饮管理系统\MrCy.csproj", "{5771232F-B72C-4FE7-99ED-2CFEE552892B}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "安装包", "安装包\安装包.vdproj", "{D0B7C6D4-2D46-46DB-868C-F926005BB698}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup1", "Setup1\Setup1.vdproj", "{553BE0A5-0C23-44F2-A361-76C62901D4E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,8 +17,8 @@ Global
 		{5771232F-B72C-4FE7-99ED-2CFEE552892B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5771232F-B72C-4FE7-99ED-2CFEE552892B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5771232F-B72C-4FE7-99ED-2CFEE552892B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D0B7C6D4-2D46-46DB-868C-F926005BB698}.Debug|Any CPU.ActiveCfg = Debug
-		{D0B7C6D4-2D46-46DB-868C-F926005BB698}.Release|Any CPU.ActiveCfg = Release
+		{553BE0A5-0C23-44F2-A361-76C62901D4E8}.Debug|Any CPU.ActiveCfg = Debug
+		{553BE0A5-0C23-44F2-A361-76C62901D4E8}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

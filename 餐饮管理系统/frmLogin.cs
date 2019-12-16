@@ -40,35 +40,43 @@ namespace MrCy
                 else
                 {
                     // 数据库登录,用户信息查询
-                    
                     try
                     {
                         string sql1 = "select * from tb_User where userName='" + textName.Text.Trim() + "' and userPwd='" + textPwd.Text.Trim() + "'";
                         SQLiteCommand cmd = new SQLiteCommand(sql1, con);
                         SQLiteDataReader sdr = cmd.ExecuteReader();
+                        string userName = "";
+                        string userPwd = "";
                         while (sdr.Read())
                         {
-                            string userName = sdr["userName"].ToString().Trim();
-                            string userPwd = sdr["userPwd"].ToString().Trim();
+                            userName = sdr["userName"].ToString().Trim();
+                            userPwd = sdr["userPwd"].ToString().Trim();
                                 // 判断是否存在该用户
                             if (userName == this.textName.Text.Trim() && userPwd == this.textPwd.Text.Trim())
                             {
                                     this.userName = userName;
                                     this.power = sdr["power"].ToString().Trim();
                                     this.now = DateTime.Now.ToString();
-                                break;
+                                    break;
                             }
                         }
                         sdr.Close();
                         con.Close();
-                      /*  MessageBox.Show("con关闭");*/
+                        /*  MessageBox.Show("con关闭");*/
                         // 进入Main窗口
-                        this.getInMain();
-                       
+                        if (userName == this.textName.Text.Trim() && userPwd == this.textPwd.Text.Trim())
+                        {
+                            this.getInMain();
+
+                        }else
+                        {
+                            throw new Exception();
+                        }
+
                     }
-                    catch (Exception ex)
+                    catch (Exception )
                     {
-                        MessageBox.Show("登录失败，请检查用户名或密码!" + ex, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("登录失败，请检查用户名或密码!" , "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -78,6 +86,7 @@ namespace MrCy
 
         private void getInMain()
         {
+            
             // 进入Main窗口
             frmMain main = new frmMain();
             main.Times = this.now;
@@ -104,6 +113,11 @@ namespace MrCy
             {
                 Application.Exit(); // 退出应用
             }
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
