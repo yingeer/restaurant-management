@@ -23,8 +23,7 @@ namespace MrCy
 
         private void frmOpen_Load(object sender, EventArgs e)
         {
-            // TODO: 这行代码将数据加载到表“dataSet1.tb_Waiter”中。您可以根据需要移动或删除它。
-            this.tb_WaiterTableAdapter.Fill(this.dataSet1.tb_Waiter);
+            
 
             // 传给表单值
             textRname.Text = this.Rname;
@@ -65,7 +64,8 @@ namespace MrCy
                 // 表单数据验证
                 string RoomName = this.Rname;
                 string GuestName = this.textCustomerName.Text.Trim();
-                string WaiterName = this.comboWaiter.SelectedItem.ToString().Trim();
+                string WaiterName = this.textBox1.ToString().Trim();
+
                 string RoomBZ = this.textBZ.Text;
                 string zhangdanDate = this.dateTimePicker1.Value.ToString();
                 if (this.textCustomerNum.Text == "")

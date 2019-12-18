@@ -391,19 +391,14 @@ namespace MrCy
                 }
                 catch(Exception)
                 {
-
                     MessageBox.Show("该菜品没有下单");
-
                 }
-
             }
             else
             {
                     MessageBox.Show("请选择菜品");
             }
             con.Close();
-
-
         }
 
         private void getData()

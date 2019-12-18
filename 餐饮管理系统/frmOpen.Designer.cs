@@ -40,16 +40,13 @@
             this.textCustomerName = new System.Windows.Forms.TextBox();
             this.textCustomerNum = new System.Windows.Forms.TextBox();
             this.textBZ = new System.Windows.Forms.TextBox();
-            this.comboWaiter = new System.Windows.Forms.ComboBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.textRname = new System.Windows.Forms.TextBox();
             this.dataSet1 = new MrCy.DataSet1();
             this.dataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tbWaiterBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tb_WaiterTableAdapter = new MrCy.DataSet1TableAdapters.tb_WaiterTableAdapter();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbWaiterBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -150,17 +147,6 @@
             this.textBZ.Size = new System.Drawing.Size(186, 28);
             this.textBZ.TabIndex = 10;
             // 
-            // comboWaiter
-            // 
-            this.comboWaiter.DataSource = this.tbWaiterBindingSource;
-            this.comboWaiter.DisplayMember = "WaiterNmae";
-            this.comboWaiter.FormattingEnabled = true;
-            this.comboWaiter.Location = new System.Drawing.Point(186, 175);
-            this.comboWaiter.Name = "comboWaiter";
-            this.comboWaiter.Size = new System.Drawing.Size(186, 26);
-            this.comboWaiter.TabIndex = 12;
-            this.comboWaiter.ValueMember = "WaiterNmae";
-            // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(553, 54);
@@ -185,14 +171,12 @@
             this.dataSet1BindingSource.DataSource = this.dataSet1;
             this.dataSet1BindingSource.Position = 0;
             // 
-            // tbWaiterBindingSource
+            // textBox1
             // 
-            this.tbWaiterBindingSource.DataMember = "tb_Waiter";
-            this.tbWaiterBindingSource.DataSource = this.dataSet1;
-            // 
-            // tb_WaiterTableAdapter
-            // 
-            this.tb_WaiterTableAdapter.ClearBeforeFill = true;
+            this.textBox1.Location = new System.Drawing.Point(186, 172);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(186, 28);
+            this.textBox1.TabIndex = 16;
             // 
             // frmOpen
             // 
@@ -201,9 +185,9 @@
             this.BackgroundImage = global::MrCy.Properties.Resources.图片2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(803, 328);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.textRname);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.comboWaiter);
             this.Controls.Add(this.textBZ);
             this.Controls.Add(this.textCustomerNum);
             this.Controls.Add(this.textCustomerName);
@@ -224,7 +208,6 @@
             this.Load += new System.EventHandler(this.frmOpen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbWaiterBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -243,12 +226,10 @@
         private System.Windows.Forms.TextBox textCustomerName;
         private System.Windows.Forms.TextBox textCustomerNum;
         private System.Windows.Forms.TextBox textBZ;
-        private System.Windows.Forms.ComboBox comboWaiter;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.TextBox textRname;
-        private System.Windows.Forms.BindingSource dataSet1BindingSource;
         private DataSet1 dataSet1;
-        private System.Windows.Forms.BindingSource tbWaiterBindingSource;
-        private DataSet1TableAdapters.tb_WaiterTableAdapter tb_WaiterTableAdapter;
+        private System.Windows.Forms.BindingSource dataSet1BindingSource;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
